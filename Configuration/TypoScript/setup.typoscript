@@ -1,0 +1,2 @@
+page.includeCSS.like_it = EXT:like_it/Resources/Public/Css/LikeIt.min.css
+page.includeJSFooterlibs.like_it = EXT:like_it/Resources/Public/JavaScript/LikeIt.min.js

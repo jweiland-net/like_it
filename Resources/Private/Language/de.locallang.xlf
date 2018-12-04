@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de"  datatype="plaintext" original="messages" date="2018-11-28T17:38:20Z" product-name="like_it">
+		<header/>
+		<body>
+			<trans-unit id="message.could_not_add_like">
+				<source>Could not add your like to the database!</source>
+				<target>Der Like konnte nicht zur Datenbank hinzugefügt werden! Bitte kontaktiere einen Administrator.</target>
+			</trans-unit>
+			<trans-unit id="message.could_not_remove_like">
+				<source>Could not remove your like!</source>
+				<target>Der Like konnte nicht entfernt werden! Bitte kontaktiere einen Administrator.</target>
+			</trans-unit>
+			<trans-unit id="message.not_liked">
+				<source>Like this article!</source>
+				<target>Gefällt mir</target>
+			</trans-unit>
+			<trans-unit id="message.liked">
+				<source>You liked this article</source>
+				<target>Gefällt dir</target>
+			</trans-unit>
+			<trans-unit id="message.amount_of_likes">
+				<source>This record has been liked <![CDATA[<span class="amount-of-likes">]]>%d<![CDATA[</span>]]> times.</source>
+				<target>Dieser Artikel wurde bereits <![CDATA[<span class="amount-of-likes">]]>%d<![CDATA[</span>]]> mal positiv bewertet.</target>
+			</trans-unit>
+			<trans-unit id="message.select_table">
+				<source>Select a record type</source>
+				<target>Bitte Datensatzart auswählen</target>
+			</trans-unit>
+			<trans-unit id="message.no_likes">
+				<source>Currently there are no likes!</source>
+				<target>Aktuell sind keine Likes vorhanden!</target>
+			</trans-unit>
+			<trans-unit id="button.edit_record">
+				<source>Edit record</source>
+				<target>Datensatz bearbeiten</target>
+			</trans-unit>
+			<trans-unit id="table.uid">
+				<source>UID</source>
+				<target>UID</target>
+			</trans-unit>
+			<trans-unit id="table.title">
+				<source>Title</source>
+				<target>Titel</target>
+			</trans-unit>
+			<trans-unit id="table.likes">
+				<source>Likes</source>
+				<target>Likes</target>
+			</trans-unit>
+			<trans-unit id="table.actions">
+				<source>Actions</source>
+				<target>Aktionen</target>
+			</trans-unit>
+			<trans-unit id="title.like_list">
+				<source>Like list</source>
+				<target>Like Liste</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

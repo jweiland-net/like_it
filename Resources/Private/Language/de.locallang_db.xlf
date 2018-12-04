@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2018-11-28T17:38:20Z" product-name="like_it">
+		<header/>
+		<body>
+			<trans-unit id="module.like_statistics.label">
+				<source>Like statistics</source>
+				<target>Like Statistik</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,38 @@
+{
+	"name": "jweiland/like-it",
+	"type": "typo3-cms-extension",
+	"description": "Like nearly any frontend content thanks to a custom view helper. No login required.",
+	"license": "GPL-2.0-or-later",
+	"keywords": [
+		"typo3",
+		"TYPO3 CMS",
+		"simple",
+		"like",
+		"like"
+	],
+	"homepage": "https://jweiland.net",
+	"authors": [
+		{
+			"name": "Pascal Rinker",
+			"email": "support@jweiland.net",
+			"role": "Developer"
+		}
+	],
+	"support": {
+		"email": "support@jweiland.net",
+		"issues": "https://github.com/jweiland-net/like_it/issues",
+		"source": "https://github.com/jweiland-net/like_it"
+	},
+	"require": {
+		"typo3/cms-core": "^8.7 || ^9.5"
+	},
+	"require-dev": {
+		"friendsofphp/php-cs-fixer": "^2.0",
+		"nimut/testing-framework": "^1.0 || ^2.0 || ^3.0 || ^4.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"JWeiland\\LikeIt\\": "Classes"
+		}
+	}
+}
