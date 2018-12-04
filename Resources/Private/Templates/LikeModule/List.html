@@ -1,10 +1,11 @@
+{namespace jw = JWeiland\LikeIt\ViewHelpers}
 <html
 	xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
 	xmlns:be="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
 	xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
 	data-namespace-typo3-fluid="true">
 
-<be:moduleLayout>
+<jw:backend.moduleLayout>
 	<p><f:translate key="message.select_table" /></p>
 	<f:form name="tableSelection" action="list">
 		<f:form.select class="form-control" options="{likedTables}" value="{table}" name="table" additionalAttributes="{onChange : 'document.tableSelection.submit();'}"/>
@@ -28,7 +29,7 @@
 						<th>{likedItemUid}</th>
 						<th>{likedItem.label}</th>
 						<th>{likedItem.amount}</th>
-						<th><be:link.editRecord class="btn btn-default" uid="{likedItemUid}" table="{table}"><core:icon identifier="actions-open" />  <f:translate key="button.edit_record" /></be:link.editRecord></th>
+						<th><jw:backend.link.editRecord class="btn btn-default" uid="{likedItemUid}" table="{table}"><core:icon identifier="actions-open" />  <f:translate key="button.edit_record" /></jw:backend.link.editRecord></th>
 					</tr>
 				</f:for>
 				</tbody>
@@ -38,5 +39,5 @@
 			<p><f:translate key="message.no_likes" /></p>
 		</f:else>
 	</f:if>
-</be:moduleLayout>
+</jw:backend.moduleLayout>
 

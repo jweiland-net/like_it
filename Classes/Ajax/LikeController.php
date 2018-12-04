@@ -19,7 +19,7 @@ use JWeiland\LikeIt\Repository\LikeRepository;
 use JWeiland\LikeIt\Utility\CookieUtility;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use TYPO3\CMS\Core\Localization\LanguageService;
+use TYPO3\CMS\Lang\LanguageService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**

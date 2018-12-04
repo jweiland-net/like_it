@@ -16,8 +16,8 @@ namespace JWeiland\LikeIt\Service;
  */
 
 use JWeiland\LikeIt\Repository\LikeRepository;
-use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Lang\LanguageService;
 
 /**
  * Class LikedTableService
@@ -61,9 +61,9 @@ class LikedTableService
 
 
     /**
-     * @return LanguageService
+     * @return LanguageService other namespace in v9
      */
-    protected function getLanguageService(): LanguageService
+    protected function getLanguageService()
     {
         return $GLOBALS['LANG'];
     }
