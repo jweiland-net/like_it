@@ -1,6 +1,6 @@
 <?php
 $EM_CONF[$_EXTKEY] = [
-    'title' => 'Simple like',
+    'title' => 'Like it',
     'description' => 'Like nearly any frontend content thanks to a custom view helper. No login required.',
     'category' => 'fe',
     'author' => 'Pascal Rinker',

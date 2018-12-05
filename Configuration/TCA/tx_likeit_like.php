@@ -6,7 +6,7 @@ return [
         'title' => 'LLL:EXT:like_it/Resources/Private/Language/locallang_db.xlf:tx_likeit_like.title',
         'crdate' => 'crdate',
         'typeicon_classes' => [
-            'default' => 'mimetypes-x-tx_scheduler_task_group' // todo: change icon!!!
+            'default' => 'tx-likeit-thumbsup'
         ],
         'searchFields' => ''
     ],
