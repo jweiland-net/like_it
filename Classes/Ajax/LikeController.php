@@ -84,7 +84,7 @@ class LikeController
                 throw new \UnexpectedValueException('No or unknown action passed!', 1543418482439);
         }
 
-        $this->processResponse($response);
+        $this->prepareResponse($response);
         return $response;
     }
 
@@ -142,7 +142,7 @@ class LikeController
      * @param ResponseInterface $response
      * @return void
      */
-    protected function processResponse(ResponseInterface &$response)
+    protected function prepareResponse(ResponseInterface &$response)
     {
         $response = $response->withHeader('Content-Type', 'application/json; charset=utf-8');
         $response->getBody()->write(\json_encode($this->responseArray));
