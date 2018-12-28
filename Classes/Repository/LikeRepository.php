@@ -25,7 +25,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class LikeRepository
 {
-    protected const TABLE_NAME = 'tx_likeit_like';
+    const TABLE_NAME = 'tx_likeit_like';
 
     /**
      * @param string $likedTable

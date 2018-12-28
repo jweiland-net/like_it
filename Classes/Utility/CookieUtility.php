@@ -23,7 +23,7 @@ use TYPO3\CMS\Core\Utility\StringUtility;
  */
 class CookieUtility
 {
-    public const COOKIE_NAME = 'tx_likeit';
+    const COOKIE_NAME = 'tx_likeit';
 
     /**
      * Get cookie value for like cookie
