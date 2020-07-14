@@ -36,5 +36,6 @@ jobs:
       - name: Lint PHP
         run: composer ci:php:lint
 
-      - name: Unit Tests
-        run: composer ci:tests:unit
+      # TODO: Write unit tests!
+      #- name: Unit Tests
+      #  run: composer ci:tests:unit
