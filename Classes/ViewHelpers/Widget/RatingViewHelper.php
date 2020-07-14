@@ -1,19 +1,15 @@
 <?php
+
 declare(strict_types=1);
-namespace JWeiland\LikeIt\ViewHelpers\Widget;
 
 /*
- * This file is part of the like_it project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
+ * This file is part of the package jweiland/like_it.
  *
  * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
+ * LICENSE file that was distributed with this source code.
  */
+
+namespace JWeiland\LikeIt\ViewHelpers\Widget;
 
 use JWeiland\LikeIt\ViewHelpers\Widget\Controller\RatingController;
 use TYPO3\CMS\Extbase\Mvc\ResponseInterface;
@@ -39,17 +35,13 @@ class RatingViewHelper extends AbstractWidgetViewHelper
      * inject controller
      *
      * @param RatingController $controller
-     * @return void
      */
-    public function injectController(RatingController $controller)
+    public function injectController(RatingController $controller): void
     {
         $this->controller = $controller;
     }
 
-    /**
-     * @return void
-     */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         $this->registerArgument('table', 'string', 'The table of the record that can be liked', true);
         $this->registerArgument('uid', 'int', 'The UID of the record that can be liked', true);

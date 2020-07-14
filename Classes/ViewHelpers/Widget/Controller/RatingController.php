@@ -1,19 +1,15 @@
 <?php
+
 declare(strict_types=1);
-namespace JWeiland\LikeIt\ViewHelpers\Widget\Controller;
 
 /*
- * This file is part of the like_it project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
+ * This file is part of the package jweiland/like_it.
  *
  * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
+ * LICENSE file that was distributed with this source code.
  */
+
+namespace JWeiland\LikeIt\ViewHelpers\Widget\Controller;
 
 use JWeiland\LikeIt\Repository\LikeRepository;
 use TYPO3\CMS\Core\Page\PageRenderer;
@@ -39,9 +35,8 @@ class RatingController extends AbstractWidgetController
      * inject likeRepository
      *
      * @param LikeRepository $likeRepository
-     * @return void
      */
-    public function injectRatingRepository(LikeRepository $likeRepository)
+    public function injectRatingRepository(LikeRepository $likeRepository): void
     {
         $this->likeRepository = $likeRepository;
     }
@@ -50,17 +45,13 @@ class RatingController extends AbstractWidgetController
      * inject pageRenderer
      *
      * @param PageRenderer $pageRenderer
-     * @return void
      */
-    public function injectPageRenderer(PageRenderer $pageRenderer)
+    public function injectPageRenderer(PageRenderer $pageRenderer): void
     {
         $this->pageRenderer = $pageRenderer;
     }
 
-    /**
-     * @return void
-     */
-    public function indexAction()
+    public function indexAction(): void
     {
         $this->pageRenderer->addInlineSetting(
             'tx_likeit',

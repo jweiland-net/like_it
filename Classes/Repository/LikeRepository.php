@@ -1,19 +1,15 @@
 <?php
+
 declare(strict_types=1);
-namespace JWeiland\LikeIt\Repository;
 
 /*
- * This file is part of the like_it project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
+ * This file is part of the package jweiland/like_it.
  *
  * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
+ * LICENSE file that was distributed with this source code.
  */
+
+namespace JWeiland\LikeIt\Repository;
 
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -31,9 +27,9 @@ class LikeRepository
      * @param string $likedTable
      * @param int $likedUid
      * @param string $cookieValue
-     * @return array|null
+     * @return array
      */
-    public function findByRecord(string $likedTable, int $likedUid, string $cookieValue)
+    public function findByRecord(string $likedTable, int $likedUid, string $cookieValue): array
     {
         return $this
             ->getConnection()
@@ -46,7 +42,7 @@ class LikeRepository
                     'cookie_value' => $cookieValue
                 ]
             )
-            ->fetch();
+            ->fetch() ?: [];
     }
 
     /**
@@ -131,8 +127,7 @@ class LikeRepository
         string $fromAlias,
         string $table,
         string $joinAlias = 'e'
-    ): QueryBuilder
-    {
+    ): QueryBuilder {
         $queryBuilder->leftJoin(
             $fromAlias,
             $table,

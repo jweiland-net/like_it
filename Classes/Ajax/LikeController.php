@@ -1,25 +1,22 @@
 <?php
+
 declare(strict_types=1);
-namespace JWeiland\LikeIt\Ajax;
 
 /*
- * This file is part of the like_it project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
+ * This file is part of the package jweiland/like_it.
  *
  * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
+ * LICENSE file that was distributed with this source code.
  */
+
+namespace JWeiland\LikeIt\Ajax;
 
 use JWeiland\LikeIt\Repository\LikeRepository;
 use JWeiland\LikeIt\Utility\CookieUtility;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use TYPO3\CMS\Lang\LanguageService;
+use TYPO3\CMS\Core\Http\JsonResponse;
+use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -60,7 +57,7 @@ class LikeController
      * @param ResponseInterface $response
      * @return ResponseInterface
      */
-    public function processRequest(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
+    public function processRequest(ServerRequestInterface $request): ResponseInterface
     {
         $this->initializeLanguage();
         $this->initializeCookie();
@@ -84,14 +81,10 @@ class LikeController
                 throw new \UnexpectedValueException('No or unknown action passed!', 1543418482439);
         }
 
-        $this->prepareResponse($response);
-        return $response;
+        return new JsonResponse($this->responseArray);
     }
 
-    /**
-     * @return void
-     */
-    protected function initializeLanguage()
+    protected function initializeLanguage(): void
     {
         if (!isset($GLOBALS['LANG']) || !\is_object($GLOBALS['LANG'])) {
             $GLOBALS['LANG'] = GeneralUtility::makeInstance(LanguageService::class);
@@ -99,19 +92,15 @@ class LikeController
         }
     }
 
-    /**
-     * @return void
-     */
-    protected function initializeCookie()
+    protected function initializeCookie(): void
     {
         $this->cookieValue = CookieUtility::getCookieValue();
     }
 
     /**
      * @param ServerRequestInterface $request
-     * @return void
      */
-    protected function initializeForeignData(ServerRequestInterface $request)
+    protected function initializeForeignData(ServerRequestInterface $request): void
     {
         if (
             !isset($request->getQueryParams()['liked_table'])
@@ -139,21 +128,9 @@ class LikeController
     }
 
     /**
-     * @param ResponseInterface $response
-     * @return void
-     */
-    protected function prepareResponse(ResponseInterface &$response)
-    {
-        $response = $response->withHeader('Content-Type', 'application/json; charset=utf-8');
-        $response->getBody()->write(\json_encode($this->responseArray));
-    }
-
-    /**
      * Add a new like
-     *
-     * @return void
      */
-    protected function addAction()
+    protected function addAction(): void
     {
         if (
             !$this->likeRepository->findByRecord($this->table, $this->uid, $this->cookieValue)
@@ -166,10 +143,8 @@ class LikeController
 
     /**
      * Check if the user with cookieValue already liked the current thing
-     *
-     * @return void
      */
-    protected function checkAction()
+    protected function checkAction(): void
     {
         if ($this->likeRepository->findByRecord($this->table, $this->uid, $this->cookieValue)) {
             $this->responseArray['liked'] = true;
@@ -184,10 +159,8 @@ class LikeController
 
     /**
      * Remove a like for foreign table and uid with cookieValue
-     *
-     * @return void
      */
-    protected function removeAction()
+    protected function removeAction(): void
     {
         if (!$this->likeRepository->removeByRecord($this->table, $this->uid, $this->cookieValue)) {
             $this->responseArray['hasErrors'] = true;
@@ -198,10 +171,8 @@ class LikeController
     /**
      * Toggle like for liked table and uid with cookieValue.
      * Will additionally execute the checkAction to provide the values liked and amountOfLikes.
-     *
-     * @return void
      */
-    protected function toggleAction()
+    protected function toggleAction(): void
     {
         if ($this->likeRepository->findByRecord($this->table, $this->uid, $this->cookieValue)) {
             $this->removeAction();

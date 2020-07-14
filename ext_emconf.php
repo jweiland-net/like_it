@@ -6,14 +6,14 @@ $EM_CONF[$_EXTKEY] = [
     'author' => 'Pascal Rinker',
     'author_email' => 'support@jweiland.net',
     'author_company' => 'jweiland.net',
-    'state' => 'beta',
+    'state' => 'stable',
     'uploadfolder' => 0,
     'createDirs' => '',
     'clearCacheOnLoad' => 0,
-    'version' => '0.0.1',
+    'version' => '1.0.0',
     'constraints' => [
         'depends' => [
-            'typo3' => '8.7.0-9.5.99'
+            'typo3' => '9.5.18-10.4.99'
         ],
         'conflicts' => [],
         'suggests' => [],
