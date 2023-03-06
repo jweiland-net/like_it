@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the package jweiland/like_it.
+ * This file is part of the package jweiland/like-it.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
@@ -36,29 +36,16 @@ class LikeModuleController extends ActionController
      */
     protected $likedTableService;
 
-    /**
-     * inject likeRepository
-     *
-     * @param LikeRepository $likeRepository
-     */
     public function injectLikeRepository(LikeRepository $likeRepository): void
     {
         $this->likeRepository = $likeRepository;
     }
 
-    /**
-     * inject likedTableService
-     *
-     * @param LikedTableService $likedTableService
-     */
     public function injectLikedTableService(LikedTableService $likedTableService): void
     {
         $this->likedTableService = $likedTableService;
     }
 
-    /**
-     * @param string $table
-     */
     public function listAction(string $table = ''): void
     {
         $likedTables = $this->likedTableService->getArrayForTableSelection();

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the package jweiland/like_it.
+ * This file is part of the package jweiland/like-it.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
@@ -31,11 +31,6 @@ use TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetViewHelper;
  */
 class RatingViewHelper extends AbstractWidgetViewHelper
 {
-    /**
-     * inject controller
-     *
-     * @param RatingController $controller
-     */
     public function injectController(RatingController $controller): void
     {
         $this->controller = $controller;

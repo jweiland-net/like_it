@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the package jweiland/like_it.
+ * This file is part of the package jweiland/like-it.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
@@ -19,12 +19,11 @@ use TYPO3\CMS\Core\Utility\StringUtility;
  */
 class CookieUtility
 {
-    const COOKIE_NAME = 'tx_likeit';
+    public const COOKIE_NAME = 'tx_likeit';
 
     /**
      * Get cookie value for like cookie
      *
-     * @return string
      * @throws CouldNotSetCookieException
      */
     public static function getCookieValue(): string
@@ -40,6 +39,7 @@ class CookieUtility
                 );
             }
         }
+
         return $cookieValue;
     }
 }
