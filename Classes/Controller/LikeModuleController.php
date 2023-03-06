@@ -50,10 +50,13 @@ class LikeModuleController extends ActionController
     {
         $likedTables = $this->likedTableService->getArrayForTableSelection();
         $this->view->assign('likedTables', $likedTables);
+
         if (!$table) {
             $table = (string)key($likedTables);
         }
+
         $this->view->assign('table', $table);
+
         if ($table) {
             $this->view->assign('likedTableItems', $this->likeRepository->findLikedTableItems($table));
         }

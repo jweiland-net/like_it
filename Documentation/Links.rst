@@ -1,25 +1,20 @@
-.. ==================================================
-.. FOR YOUR INFORMATION
-.. --------------------------------------------------
-.. -*- coding: utf-8 -*- with BOM.
-
-.. include:: Includes.txt
+..  include:: /Includes.rst.txt
 
 
 .. _links:
 
+=====
 Links
------
+=====
 
 :TER:
-	https://extensions.typo3.org/extension/like_it/
+    https://extensions.typo3.org/extension/like_it/
 
 :Bug Tracker:
-	https://github.com/jweiland-net/like_it/issues
+    https://github.com/jweiland-net/like_it/issues
 
 :Git Repository:
-	https://github.com/jweiland-net/like_it
+    https://github.com/jweiland-net/like_it
 
 :Contact:
-	https://jweiland.net/kontakt.html
-
+    https://jweiland.net/kontakt.html
