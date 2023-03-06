@@ -1,26 +1,30 @@
 # Adapted from https://github.com/TYPO3GmbH/blog/blob/master/.github/workflows/ci.yml
 name: CI
 
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
+
     strategy:
+      fail-fast: false
       matrix:
-        typo3: [^9.5, ^10.4]
-        php: ['7.2', '7.3', '7.4']
+        typo3: [^10.4, ^11.5]
+        php: ['7.4']
+        include:
+        - typo3: ^11.5
+          php: '8.0'
 
     steps:
-
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Set up PHP Version ${{ matrix.php }}
-        run: |
-          sudo update-alternatives --set php /usr/bin/php${{ matrix.php }}
-          php -v
+      - name: Setup PHP ${{ matrix.php }}, with composer and extensions
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mbstring, dom, zip, mysql
 
       - name: Validate composer.json and composer.lock
         run: composer validate

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the package jweiland/like_it.
+ * This file is part of the package jweiland/like-it.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
@@ -34,7 +34,7 @@ class LikeController
      */
     protected $responseArray = [
         'hasErrors' => false,
-        'message' => ''
+        'message' => '',
     ];
 
     /**
@@ -52,11 +52,6 @@ class LikeController
      */
     protected $table = '';
 
-    /**
-     * @param ServerRequestInterface $request
-     * @param ResponseInterface $response
-     * @return ResponseInterface
-     */
     public function processRequest(ServerRequestInterface $request): ResponseInterface
     {
         $this->initializeLanguage();
@@ -97,9 +92,6 @@ class LikeController
         $this->cookieValue = CookieUtility::getCookieValue();
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     */
     protected function initializeForeignData(ServerRequestInterface $request): void
     {
         if (
@@ -118,10 +110,6 @@ class LikeController
         $this->uid = $uid;
     }
 
-    /**
-     * @param string $key
-     * @return string
-     */
     protected function translate(string $key): string
     {
         return $GLOBALS['LANG']->sL('LLL:EXT:like_it/Resources/Private/Language/locallang.xlf:' . $key);

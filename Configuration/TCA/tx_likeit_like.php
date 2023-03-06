@@ -1,4 +1,5 @@
 <?php
+
 return [
     'ctrl' => [
         'label' => 'uid',
@@ -6,12 +7,9 @@ return [
         'title' => 'LLL:EXT:like_it/Resources/Private/Language/locallang_db.xlf:tx_likeit_like.title',
         'crdate' => 'crdate',
         'typeicon_classes' => [
-            'default' => 'tx-likeit-thumbsup'
+            'default' => 'tx-likeit-thumbsup',
         ],
-        'searchFields' => ''
-    ],
-    'interface' => [
-        'showRecordFieldList' => ''
+        'searchFields' => '',
     ],
     'columns' => [
         'liked_uid' => [
@@ -21,7 +19,7 @@ return [
                 'size' => 8,
                 'max' => 80,
                 'eval' => 'required,num',
-            ]
+            ],
         ],
         'liked_table' => [
             'label' => 'LLL:EXT:like_it/Resources/Private/Language/locallang_db.xlf:tx_likeit_like.liked_table',
@@ -30,7 +28,7 @@ return [
                 'size' => 20,
                 'max' => 80,
                 'eval' => 'required,trim',
-            ]
+            ],
         ],
         'cookie_value' => [
             'label' => 'LLL:EXT:like_it/Resources/Private/Language/locallang_db.xlf:tx_likeit_like.cookie_value',
@@ -39,7 +37,7 @@ return [
                 'size' => 20,
                 'max' => 255,
                 'eval' => 'required,trim,password',
-            ]
+            ],
         ],
     ],
     'types' => [

@@ -1,2 +1,10 @@
 <?php
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile('like_it', 'Configuration/TypoScript/', 'Like it');
+if (!defined('TYPO3_MODE')) {
+    die('Access denied.');
+}
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
+    'like_it',
+    'Configuration/TypoScript/',
+    'Like it'
+);

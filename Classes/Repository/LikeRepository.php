@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the package jweiland/like_it.
+ * This file is part of the package jweiland/like-it.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
@@ -21,14 +21,8 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class LikeRepository
 {
-    const TABLE_NAME = 'tx_likeit_like';
+    public const TABLE_NAME = 'tx_likeit_like';
 
-    /**
-     * @param string $likedTable
-     * @param int $likedUid
-     * @param string $cookieValue
-     * @return array
-     */
     public function findByRecord(string $likedTable, int $likedUid, string $cookieValue): array
     {
         return $this
@@ -39,7 +33,7 @@ class LikeRepository
                 [
                     'liked_table' => $likedTable,
                     'liked_uid' => $likedUid,
-                    'cookie_value' => $cookieValue
+                    'cookie_value' => $cookieValue,
                 ]
             )
             ->fetch() ?: [];
@@ -48,8 +42,6 @@ class LikeRepository
     /**
      * Find all installed liked tables
      * e.g. ['tx_news_domain_model_news', 'tt_content']
-     *
-     * @return array
      */
     public function findAllInstalledLikedTables(): array
     {
@@ -62,6 +54,7 @@ class LikeRepository
                 ['liked_table']
             )
             ->fetchAll();
+
         $tables = [];
         foreach ($rows as $row) {
             // Only show currently registered tables
@@ -70,6 +63,7 @@ class LikeRepository
             }
             $tables[] = $row['liked_table'];
         }
+
         return $tables;
     }
 
@@ -78,9 +72,6 @@ class LikeRepository
      * of the records using TCA of $table.
      * e.g. findLikedTableItems('tx_news_domain_model_news')
      * will return sth. like: '[1 => ['label' => 'Hello World', 'amount' => 512], 23 => 'label' => 'My new garden', 'amount' => 23]]
-     *
-     * @param string $table
-     * @return array
      */
     public function findLikedTableItems(string $table): array
     {
@@ -90,6 +81,7 @@ class LikeRepository
                 1543591232519
             );
         }
+
         $queryBuilder = $this->getConnection()->createQueryBuilder();
         $queryBuilder
             ->select('l.liked_uid')
@@ -100,14 +92,16 @@ class LikeRepository
             ->groupBy('l.liked_uid')
             ->orderBy('amount', 'DESC');
         $this->addHiddenAndDeleteFieldCheck($queryBuilder, 'l', $table);
+
         $rows = $queryBuilder->execute()->fetchAll();
         $items = [];
         foreach ($rows as $row) {
             $items[$row['liked_uid']] = [
                 'label' => $this->findLabelForTableItem($table, (int)$row['liked_uid']),
-                'amount' => $row['amount']
+                'amount' => $row['amount'],
             ];
         }
+
         return $items;
     }
 
@@ -116,11 +110,7 @@ class LikeRepository
      * to the current QueryBuilder instance.
      * You need to check if $GLOBALS['TCA'][$table] exists!
      *
-     * @param QueryBuilder $queryBuilder
-     * @param string $fromAlias
-     * @param string $table
      * @param string $joinAlias default: e (= external)
-     * @return QueryBuilder
      */
     protected function addHiddenAndDeleteFieldCheck(
         QueryBuilder $queryBuilder,
@@ -134,6 +124,7 @@ class LikeRepository
             $joinAlias,
             sprintf('%s.uid = %s.liked_uid', $joinAlias, $fromAlias)
         );
+
         // Respect delete and disabled fields
         if (isset($GLOBALS['TCA'][$table]['ctrl']['delete'])) {
             $queryBuilder->andWhere($queryBuilder->expr()->eq(
@@ -141,22 +132,20 @@ class LikeRepository
                 0
             ));
         }
+
         if (isset($GLOBALS['TCA'][$table]['ctrl']['enablecolumns']['disabled'])) {
             $queryBuilder->andWhere($queryBuilder->expr()->eq(
                 $joinAlias . '.' . $GLOBALS['TCA'][$table]['ctrl']['enablecolumns']['disabled'],
                 0
             ));
         }
+
         return $queryBuilder;
     }
 
     /**
      * Find label for a record from $table with uid $uid.
      * This will only work if the table is registered in TCA!
-     *
-     * @param string $table
-     * @param int $uid
-     * @return string
      */
     protected function findLabelForTableItem(string $table, int $uid): string
     {
@@ -178,11 +167,6 @@ class LikeRepository
         return (string)$row[$labelField];
     }
 
-    /**
-     * @param string $likedTable
-     * @param int $likedUid
-     * @return int
-     */
     public function countByRecord(string $likedTable, int $likedUid): int
     {
         return $this
@@ -191,9 +175,6 @@ class LikeRepository
     }
 
     /**
-     * @param string $likedTable
-     * @param int $likedUid
-     * @param string $cookieValue
      * @return int number of affected rows
      */
     public function removeByRecord(string $likedTable, int $likedUid, string $cookieValue): int
@@ -205,17 +186,11 @@ class LikeRepository
                 [
                     'liked_table' => $likedTable,
                     'liked_uid' => $likedUid,
-                    'cookie_value' => $cookieValue
+                    'cookie_value' => $cookieValue,
                 ]
             );
     }
 
-    /**
-     * @param string $likedTable
-     * @param int $likedUid
-     * @param string $cookieValue
-     * @return int number of affected rows
-     */
     public function insertRecord(string $likedTable, int $likedUid, string $cookieValue): int
     {
         $time = time();
@@ -228,14 +203,11 @@ class LikeRepository
                     'liked_uid' => $likedUid,
                     'cookie_value' => $cookieValue,
                     'crdate' => $time,
-                    'tstamp' => $time
+                    'tstamp' => $time,
                 ]
             );
     }
 
-    /**
-     * @return Connection
-     */
     protected function getConnection(): Connection
     {
         return GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable(self::TABLE_NAME);
