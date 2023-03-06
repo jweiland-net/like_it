@@ -1,57 +1,55 @@
-﻿.. ==================================================
-.. FOR YOUR INFORMATION
-.. --------------------------------------------------
-.. -*- coding: utf-8 -*- with BOM.
+﻿..  include:: /Includes.rst.txt
 
-.. include:: Includes.txt
 
 .. _start:
 
-=============================================================
-like_it
-=============================================================
+=======
+Like it
+=======
 
-.. only:: html
+:Extension key:
+    like_it
 
-	:Classification:
-		like_it
+:Package name:
+    jweiland/like-it
 
-	:Version:
-		|release|
+:Version:
+    |release|
 
-	:Language:
-		en
+:Language:
+    en
 
-	:Description:
-		Like nearly any frontend content thanks to a custom view helper. No login required.
+:Author:
+    Stefan Froemken
 
-	:Keywords:
-		like,rating,rate system
+:License:
+    This document is published under the
+    `Creative Commons BY 4.0 <https://creativecommons.org/licenses/by/4.0/>`__
+    license.
 
-	:Copyright:
-		2018
+:Rendered:
+    |today|
 
-	:Author:
-		jweiland.net
+----
 
-	:Email:
-		support@jweiland.net
+Like nearly any frontend content thanks to a custom view helper. No login required.
 
-	:License:
-		This document is published under the Open Content License
-		available from http://www.opencontent.org/opl.shtml
+----
 
-	:Rendered:
-		|today|
+**Table of Contents:**
 
-	The content of this document is related to TYPO3,
-	a GNU/GPL CMS/Framework available from `www.typo3.org <http://www.typo3.org/>`_.
+..  toctree::
+    :maxdepth: 2
+    :titlesonly:
 
-	**Table of Contents**
+    Introduction/Index
+    Administrator/Index
+    Links
 
-.. toctree::
-	:maxdepth: 3
+..  Meta Menu
 
-	Introduction/Index
-	Administrator/Index
-	Links
+..  toctree::
+    :hidden:
+
+    Sitemap
+    genindex
