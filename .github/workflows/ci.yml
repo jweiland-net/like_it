@@ -45,6 +45,11 @@ jobs:
     needs: code-quality
     runs-on: ubuntu-latest
 
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
+      contents: write
+
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -67,4 +72,4 @@ jobs:
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: "Github Action: Auto Minified JS and CSS files"
-        branch: ${{ github.ref }}
+        file_pattern: 'Resources/Public/Css/*.min.css Resources/Public/JavaScript/*.min.js'
