@@ -18,7 +18,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Setup PHP ${{ matrix.php }}, with composer and extensions
       uses: shivammathur/setup-php@v2
@@ -40,14 +40,20 @@ jobs:
     - name: Lint PHP
       run: composer ci:php:lint
 
-    # Target files will be overwritten
+  # Target files will be overwritten
+  minify:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
     - name: Minify CSS with Web minifier
       uses: zugazagoitia/minify-js@v0.2
       with:
         directory: 'Build/Css/'
         output: 'Resources/Public/Css/'
 
-    # Target files will be overwritten
     - name: Minify JavaScript with Web minifier
       uses: zugazagoitia/minify-js@v0.2
       with:
