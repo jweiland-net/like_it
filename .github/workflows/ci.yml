@@ -51,17 +51,16 @@ jobs:
       with:
         ref: ${{ github.ref }}
 
-
     - name: Minify CSS with Web minifier
       uses: zugazagoitia/minify-js@v0.2
       with:
-        directory: 'Build/Css/'
+        directory: 'Build/Css/LikeIt.css'
         output: 'Resources/Public/Css/'
 
     - name: Minify JavaScript with Web minifier
       uses: zugazagoitia/minify-js@v0.2
       with:
-        directory: 'Build/JavaScript/'
+        directory: 'Build/JavaScript/LikeIt.js'
         output: 'Resources/Public/JavaScript/'
 
     - name: Auto committing minified CSS/JS files
