@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace JWeiland\LikeIt\Controller;
 
-use JWeiland\LikeIt\Repository\LikeRepository;
+use JWeiland\LikeIt\Domain\Repository\LikeRepository;
 use JWeiland\LikeIt\Service\LikedTableService;
 use TYPO3\CMS\Backend\View\BackendTemplateView;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;

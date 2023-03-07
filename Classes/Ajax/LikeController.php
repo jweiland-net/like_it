@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace JWeiland\LikeIt\Ajax;
 
-use JWeiland\LikeIt\Repository\LikeRepository;
+use JWeiland\LikeIt\Domain\Repository\LikeRepository;
 use JWeiland\LikeIt\Utility\CookieUtility;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -95,17 +95,19 @@ class LikeController
     protected function initializeForeignData(ServerRequestInterface $request): void
     {
         if (
-            !isset($request->getQueryParams()['liked_table'])
-            || !$table = (string)$request->getQueryParams()['liked_table']
+            !isset($request->getQueryParams()['table'])
+            || !$table = (string)$request->getQueryParams()['table']
         ) {
             throw new \UnexpectedValueException('No or unknown liked table passed!', 1543419903286);
         }
+
         if (
-            !isset($request->getQueryParams()['liked_uid'])
-            || !$uid = (int)$request->getQueryParams()['liked_uid']
+            !isset($request->getQueryParams()['uid'])
+            || !$uid = (int)$request->getQueryParams()['uid']
         ) {
             throw new \UnexpectedValueException('No or unknown liked uid passed!', 1543419956387);
         }
+
         $this->table = $table;
         $this->uid = $uid;
     }
@@ -139,6 +141,7 @@ class LikeController
         } else {
             $this->responseArray['liked'] = false;
         }
+
         $this->responseArray['amountOfLikes'] = $this->likeRepository->countByRecord(
             $this->table,
             $this->uid
@@ -167,6 +170,7 @@ class LikeController
         } else {
             $this->addAction();
         }
+
         $this->checkAction();
     }
 }

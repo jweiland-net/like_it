@@ -9,7 +9,7 @@ declare(strict_types=1);
  * LICENSE file that was distributed with this source code.
  */
 
-namespace JWeiland\LikeIt\Repository;
+namespace JWeiland\LikeIt\Domain\Repository;
 
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -21,7 +21,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class LikeRepository
 {
-    public const TABLE_NAME = 'tx_likeit_like';
+    private const TABLE_NAME = 'tx_likeit_like';
 
     public function findByRecord(string $likedTable, int $likedUid, string $cookieValue): array
     {
@@ -91,9 +91,11 @@ class LikeRepository
             ->setParameter('likedTable', $table)
             ->groupBy('l.liked_uid')
             ->orderBy('amount', 'DESC');
+
         $this->addHiddenAndDeleteFieldCheck($queryBuilder, 'l', $table);
 
         $rows = $queryBuilder->execute()->fetchAll();
+
         $items = [];
         foreach ($rows as $row) {
             $items[$row['liked_uid']] = [
@@ -158,12 +160,14 @@ class LikeRepository
                 ['uid' => $uid]
             )
             ->fetch();
+
         if (!isset($row[$labelField])) {
             throw new \UnexpectedValueException(
                 'Could not find "' . $table . '" with uid "' . $uid . '".',
                 1543591329803
             );
         }
+
         return (string)$row[$labelField];
     }
 
