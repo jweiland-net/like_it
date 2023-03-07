@@ -57,16 +57,14 @@ jobs:
         ref: ${{ github.ref }}
 
     - name: Minify CSS with Web minifier
-      uses: jossydevers/minify-js@v1.0.0
+      uses: nizarmah/auto-minify@v2.1
       with:
-        directory: 'Build/Css/LikeIt.css'
-        output: 'Resources/Public/Css/'
+        directory: 'Resources/Public/Css'
 
     - name: Minify JavaScript with Web minifier
-      uses: jossydevers/minify-js@v1.0.0
+      uses: nizarmah/auto-minify@v2.1
       with:
-        directory: 'Build/JavaScript/LikeIt.js'
-        output: 'Resources/Public/JavaScript/'
+        directory: 'Resources/Public/JavaScript'
 
     - name: Auto committing minified CSS/JS files
       uses: stefanzweifel/git-auto-commit-action@v4
