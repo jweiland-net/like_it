@@ -4,7 +4,7 @@ name: CI
 on: [pull_request]
 
 jobs:
-  build:
+  code-quality:
     runs-on: ubuntu-latest
 
     strategy:
@@ -17,29 +17,59 @@ jobs:
           php: '8.0'
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v3
 
-      - name: Setup PHP ${{ matrix.php }}, with composer and extensions
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.php }}
-          extensions: mbstring, dom, zip, mysql
+    - name: Setup PHP ${{ matrix.php }}, with composer and extensions
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php }}
+        extensions: mbstring, dom, zip, mysql
 
-      - name: Validate composer.json and composer.lock
-        run: composer validate
+    - name: Validate composer.json and composer.lock
+      run: composer validate
 
-      - name: Install dependencies with typo3/cms-core:${{ matrix.typo3 }}
-        run: |
-          composer require typo3/cms-core:${{ matrix.typo3 }} --no-progress
-          git checkout composer.json
+    - name: Install dependencies with typo3/cms-core:${{ matrix.typo3 }}
+      run: |
+        composer require typo3/cms-core:${{ matrix.typo3 }} --no-progress
+        git checkout composer.json
 
-      - name: php-cs-fixer
-        run: composer ci:php:fixer
+    - name: php-cs-fixer
+      run: composer ci:php:fixer
 
-      - name: Lint PHP
-        run: composer ci:php:lint
+    - name: Lint PHP
+      run: composer ci:php:lint
 
-      # TODO: Write unit tests!
-      #- name: Unit Tests
-      #  run: composer ci:tests:unit
+  # Target files will be overwritten
+  minify:
+    needs: code-quality
+    runs-on: ubuntu-latest
+
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
+      contents: write
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        ref: ${{ github.ref }}
+
+    - name: Minify CSS with Web minifier
+      uses: jossydevers/minify-js@v1.0.0
+      with:
+        directory: 'Build/Css/LikeIt.css'
+        output: 'Resources/Public/Css/'
+
+    - name: Minify JavaScript with Web minifier
+      uses: jossydevers/minify-js@v1.0.0
+      with:
+        directory: 'Build/JavaScript/LikeIt.js'
+        output: 'Resources/Public/JavaScript/'
+
+    - name: Auto committing minified CSS/JS files
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: "Github Action: Auto Minified JS and CSS files"
+        file_pattern: 'Resources/Public/Css/*.min.css Resources/Public/JavaScript/*.min.js'

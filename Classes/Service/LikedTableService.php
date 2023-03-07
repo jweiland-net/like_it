@@ -11,9 +11,8 @@ declare(strict_types=1);
 
 namespace JWeiland\LikeIt\Service;
 
-use JWeiland\LikeIt\Repository\LikeRepository;
+use JWeiland\LikeIt\Domain\Repository\LikeRepository;
 use TYPO3\CMS\Core\Localization\LanguageService;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Class LikedTableService
@@ -25,9 +24,9 @@ class LikedTableService
      */
     protected $likeRepository;
 
-    public function __construct()
+    public function __construct(LikeRepository $likeRepository)
     {
-        $this->likeRepository = GeneralUtility::makeInstance(LikeRepository::class);
+        $this->likeRepository = $likeRepository;
     }
 
     /**

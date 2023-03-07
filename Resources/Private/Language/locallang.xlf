@@ -16,7 +16,7 @@
 				<source>You like</source>
 			</trans-unit>
 			<trans-unit id="message.amount_of_likes">
-				<source>This record has been liked <![CDATA[<span class="amount-of-likes">]]>%d<![CDATA[</span>]]> times.</source>
+				<source><![CDATA[This record has been liked <span class="amount-of-likes">%d</span> times.]]></source>
 			</trans-unit>
 			<trans-unit id="message.select_table">
 				<source>Select a record type</source>
