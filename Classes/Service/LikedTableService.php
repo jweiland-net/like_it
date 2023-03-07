@@ -13,7 +13,6 @@ namespace JWeiland\LikeIt\Service;
 
 use JWeiland\LikeIt\Domain\Repository\LikeRepository;
 use TYPO3\CMS\Core\Localization\LanguageService;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Class LikedTableService
