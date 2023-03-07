@@ -57,13 +57,13 @@ jobs:
         ref: ${{ github.ref }}
 
     - name: Minify CSS with Web minifier
-      uses: zugazagoitia/minify-js@v0.2
+      uses: jossydevers/minify-js@v1.0.0
       with:
         directory: 'Build/Css/LikeIt.css'
         output: 'Resources/Public/Css/'
 
     - name: Minify JavaScript with Web minifier
-      uses: zugazagoitia/minify-js@v0.2
+      uses: jossydevers/minify-js@v1.0.0
       with:
         directory: 'Build/JavaScript/LikeIt.js'
         output: 'Resources/Public/JavaScript/'
