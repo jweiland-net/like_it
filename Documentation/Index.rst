@@ -43,7 +43,8 @@ Like nearly any frontend content thanks to a custom view helper. No login requir
     :titlesonly:
 
     Introduction/Index
-    Administrator/Index
+    Installation/Index
+    Configuration/Index
     Links
 
 ..  Meta Menu
