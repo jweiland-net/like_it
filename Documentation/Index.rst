@@ -45,6 +45,7 @@ Like nearly any frontend content thanks to a custom view helper. No login requir
     Introduction/Index
     Installation/Index
     Configuration/Index
+    ChangeLog/Index
     Links
 
 ..  Meta Menu
