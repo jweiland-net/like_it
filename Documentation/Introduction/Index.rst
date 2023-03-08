@@ -12,7 +12,8 @@ Introduction
 What it does?
 =============
 
-This extension allows you to integrate a like button functionality for nearly any frontend plugin (Text, events, news, ...).
+This extension allows you to integrate a like button functionality for nearly
+any frontend plugin (Text, events, news, ...).
 
 Screenshots
 ===========

@@ -6,7 +6,8 @@ With `like_it` you can create, manage and display company entries.
 
 ## 1 Features
 
-* Create and manage companies
+* This extension allows you to integrate a like button functionality for nearly
+  any frontend plugin (Text, events, news, ...).
 
 ## 2 Usage
 
@@ -28,6 +29,5 @@ Download and install `like_it` with the extension manager module.
 
 ### 2.2 Minimal setup
 
-1) Include the static TypoScript of the extension.
-2) Create company and district records on a sysfolder.
-3) Add like_it plugin on a page and select at least the sysfolder as startingpoint.
+Please read documentation how to implement `like_it` into your
+or a foreign extension.
