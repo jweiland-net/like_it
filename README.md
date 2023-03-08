@@ -1,6 +1,6 @@
 # TYPO3 Extension `like_it`
 
-![Build Status](https://github.com/jweiland-net/like_it/workflows/CI/badge.svg)
+[![CI](https://github.com/jweiland-net/like_it/actions/workflows/ci.yml/badge.svg)](https://github.com/jweiland-net/like_it/actions/workflows/ci.yml)
 
 With `like_it` you can create, manage and display company entries.
 
