@@ -7,8 +7,10 @@
 ChangeLog
 =========
 
-..  contents::
-    :local:
+Version 2.0.1
+=============
+
+*   Add extension key to composer.json
 
 Version 2.0.0
 =============
