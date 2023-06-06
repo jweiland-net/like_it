@@ -13,7 +13,8 @@ namespace JWeiland\LikeIt\Controller;
 
 use JWeiland\LikeIt\Domain\Repository\LikeRepository;
 use JWeiland\LikeIt\Service\LikedTableService;
-use TYPO3\CMS\Backend\View\BackendTemplateView;
+use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
@@ -21,11 +22,6 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
  */
 class LikeModuleController extends ActionController
 {
-    /**
-     * @var BackendTemplateView
-     */
-    protected $view;
-
     /**
      * @var LikeRepository
      */
@@ -45,8 +41,15 @@ class LikeModuleController extends ActionController
     {
         $this->likedTableService = $likedTableService;
     }
+    protected ModuleTemplateFactory $moduleTemplateFactory;
 
-    public function listAction(string $table = ''): void
+    public function __construct(
+        ModuleTemplateFactory $moduleTemplateFactory
+    ) {
+        $this->moduleTemplateFactory = $moduleTemplateFactory;
+    }
+
+    public function listAction(string $table = ''): ResponseInterface
     {
         $likedTables = $this->likedTableService->getArrayForTableSelection();
         $this->view->assign('likedTables', $likedTables);
@@ -60,5 +63,8 @@ class LikeModuleController extends ActionController
         if ($table) {
             $this->view->assign('likedTableItems', $this->likeRepository->findLikedTableItems($table));
         }
+        $moduleTemplate = $this->moduleTemplateFactory->create($this->request);
+        $moduleTemplate->setContent($this->view->render());
+        return $this->htmlResponse($moduleTemplate->renderContent());
     }
 }
