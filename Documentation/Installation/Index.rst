@@ -15,14 +15,14 @@ If your TYPO3 installation works in composer mode, please execute following comm
 ..  code-block:: bash
 
     composer req jweiland/like-it
-    vendor/bin/typo3 extension:setup --extension=like_it
+    vendor/bin/typo3 extension:setup --extension=like-it
 
 If you work with DDEV please execute this command:
 
 ..  code-block:: bash
 
     ddev composer req jweiland/like-it
-    ddev exec vendor/bin/typo3 extension:setup --extension=like_it
+    ddev exec vendor/bin/typo3 extension:setup --extension=like-it
 
 ExtensionManager
 ================
