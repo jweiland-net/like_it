@@ -22,6 +22,14 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 class LikeModuleController extends ActionController
 {
     /**
+     * The default view object to use if none of the resolved views can render
+     * a response for the current request.
+     *
+     * @var string
+     */
+    protected $defaultViewObjectName = BackendTemplateView::class;
+
+    /**
      * @var BackendTemplateView
      */
     protected $view;

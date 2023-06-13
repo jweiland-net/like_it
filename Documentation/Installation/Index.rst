@@ -10,7 +10,8 @@ Installation
 Composer
 ========
 
-If your TYPO3 installation works in composer mode, please execute following command:
+If your TYPO3 installation works in composer mode, please execute
+following command:
 
 ..  code-block:: bash
 
@@ -27,13 +28,15 @@ If you work with DDEV please execute this command:
 ExtensionManager
 ================
 
-On non composer based TYPO3 installations you can install `like-it` still over the ExtensionManager:
+On non composer based TYPO3 installations you can install `like_it` still
+over the ExtensionManager:
 
 ..  rst-class:: bignums
 
 1.  Login
 
-    Login to backend of your TYPO3 installation as an administrator or system maintainer.
+    Login to backend of your TYPO3 installation as an administrator
+    or system maintainer.
 
 2.  Open ExtensionManager
 
@@ -41,14 +44,16 @@ On non composer based TYPO3 installations you can install `like-it` still over t
 
 3.  Update Extensions
 
-    Choose `Get Extensions` from the upper selectbox and click on the `Update now` button at the upper right.
+    Choose `Get Extensions` from the upper selectbox and click on
+    the `Update now` button at the upper right.
 
-4.  Install `like-it`
+4.  Install `like_it`
 
-    Use the search field to find `like-it`. Choose the `like-it` line from the search result and click on the cloud
-    icon to install `like-it`.
+    Use the search field to find `like_it`. Choose the `like_it` line
+    from the search result and click on the cloud
+    icon to install `like_it`.
 
 Next step
 =========
 
-:ref:`Configure like-it <configuration>`.
+:ref:`Configure like_it <configuration>`.
