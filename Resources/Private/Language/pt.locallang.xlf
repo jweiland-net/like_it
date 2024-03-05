@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2018-11-28T17:38:20Z" product-name="like_it" target-language="pt-PT">
+    <header/>
+    <body>
+      <trans-unit id="message.could_not_add_like">
+        <source>Could not add your like to the database!</source>
+        <target state="needs-translation">Could not add your like to the database!</target>
+      </trans-unit>
+      <trans-unit id="message.could_not_remove_like">
+        <source>Could not remove your like!</source>
+        <target state="needs-translation">Could not remove your like!</target>
+      </trans-unit>
+      <trans-unit id="message.not_liked">
+        <source>Like</source>
+        <target state="needs-translation">Like</target>
+      </trans-unit>
+      <trans-unit id="message.liked">
+        <source>You like</source>
+        <target state="needs-translation">You like</target>
+      </trans-unit>
+      <trans-unit id="message.amount_of_likes">
+        <source><![CDATA[This record has been liked <span class="amount-of-likes">%d</span> times.]]></source>
+        <target state="needs-translation"><![CDATA[This record has been liked <span class="amount-of-likes">%d</span> times.]]></target>
+      </trans-unit>
+      <trans-unit id="message.select_table">
+        <source>Select a record type</source>
+        <target state="needs-translation">Select a record type</target>
+      </trans-unit>
+      <trans-unit id="message.no_likes">
+        <source>Currently there are no likes!</source>
+        <target state="needs-translation">Currently there are no likes!</target>
+      </trans-unit>
+      <trans-unit id="button.edit_record">
+        <source>Edit record</source>
+        <target state="needs-translation">Edit record</target>
+      </trans-unit>
+      <trans-unit id="table.uid">
+        <source>UID</source>
+        <target state="needs-translation">UID</target>
+      </trans-unit>
+      <trans-unit id="table.title">
+        <source>Title</source>
+        <target state="needs-translation">Title</target>
+      </trans-unit>
+      <trans-unit id="table.likes">
+        <source>Likes</source>
+        <target state="needs-translation">Likes</target>
+      </trans-unit>
+      <trans-unit id="table.actions">
+        <source>Actions</source>
+        <target state="needs-translation">Actions</target>
+      </trans-unit>
+      <trans-unit id="title.like_list">
+        <source>Like list</source>
+        <target state="needs-translation">Like list</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
