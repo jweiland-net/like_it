@@ -3,57 +3,57 @@
   <file source-language="en" datatype="plaintext" original="messages" date="2018-11-28T17:38:20Z" product-name="like_it" target-language="de">
     <header/>
     <body>
-      <trans-unit id="message.could_not_add_like">
+      <trans-unit id="message.could_not_add_like" approved="yes">
         <source>Could not add your like to the database!</source>
-        <target state="translated">Der Like konnte nicht zur Datenbank hinzugefügt werden! Bitte kontaktiere einen Administrator.</target>
+        <target state="final">Der Like konnte nicht zur Datenbank hinzugefügt werden! Bitte kontaktiere einen Administrator.</target>
       </trans-unit>
-      <trans-unit id="message.could_not_remove_like">
+      <trans-unit id="message.could_not_remove_like" approved="yes">
         <source>Could not remove your like!</source>
-        <target state="translated">Der Like konnte nicht entfernt werden! Bitte kontaktiere einen Administrator.</target>
+        <target state="final">Der Like konnte nicht entfernt werden! Bitte kontaktiere einen Administrator.</target>
       </trans-unit>
-      <trans-unit id="message.not_liked">
+      <trans-unit id="message.not_liked" approved="yes">
         <source>Like</source>
-        <target state="translated">Gefällt mir</target>
+        <target state="final">Gefällt mir</target>
       </trans-unit>
-      <trans-unit id="message.liked">
+      <trans-unit id="message.liked" approved="yes">
         <source>You like</source>
-        <target state="translated">Gefällt dir</target>
+        <target state="final">Gefällt dir</target>
       </trans-unit>
-      <trans-unit id="message.amount_of_likes">
+      <trans-unit id="message.amount_of_likes" approved="yes">
         <source><![CDATA[This record has been liked <span class="amount-of-likes">%d</span> times.]]></source>
-        <target state="translated"><![CDATA[Dieser Artikel wurde bereits <span class="amount-of-likes">%d</span> mal positiv bewertet.]]></target>
+        <target state="final"><![CDATA[Dieser Artikel wurde bereits <span class="amount-of-likes">%d</span> mal positiv bewertet.]]></target>
       </trans-unit>
-      <trans-unit id="message.select_table">
+      <trans-unit id="message.select_table" approved="yes">
         <source>Select a record type</source>
-        <target state="translated">Bitte Datensatzart auswählen</target>
+        <target state="final">Bitte Datensatzart auswählen</target>
       </trans-unit>
-      <trans-unit id="message.no_likes">
+      <trans-unit id="message.no_likes" approved="yes">
         <source>Currently there are no likes!</source>
-        <target state="translated">Aktuell sind keine Likes vorhanden!</target>
+        <target state="final">Aktuell sind keine Likes vorhanden!</target>
       </trans-unit>
-      <trans-unit id="button.edit_record">
+      <trans-unit id="button.edit_record" approved="yes">
         <source>Edit record</source>
-        <target state="translated">Datensatz bearbeiten</target>
+        <target state="final">Datensatz bearbeiten</target>
       </trans-unit>
-      <trans-unit id="table.uid">
+      <trans-unit id="table.uid" approved="yes">
         <source>UID</source>
-        <target state="needs-translation">UID</target>
+        <target state="final">UID</target>
       </trans-unit>
-      <trans-unit id="table.title">
+      <trans-unit id="table.title" approved="yes">
         <source>Title</source>
-        <target state="translated">Titel</target>
+        <target state="final">Titel</target>
       </trans-unit>
-      <trans-unit id="table.likes">
+      <trans-unit id="table.likes" approved="yes">
         <source>Likes</source>
-        <target state="needs-translation">Likes</target>
+        <target state="final">Likes</target>
       </trans-unit>
-      <trans-unit id="table.actions">
+      <trans-unit id="table.actions" approved="yes">
         <source>Actions</source>
-        <target state="translated">Aktionen</target>
+        <target state="final">Aktionen</target>
       </trans-unit>
-      <trans-unit id="title.like_list">
+      <trans-unit id="title.like_list" approved="yes">
         <source>Like list</source>
-        <target state="translated">Like Liste</target>
+        <target state="final">Like Liste</target>
       </trans-unit>
     </body>
   </file>
