@@ -3,25 +3,25 @@
   <file source-language="en" datatype="plaintext" original="messages" date="2018-11-28T17:38:20Z" product-name="like_it" target-language="de">
     <header/>
     <body>
-      <trans-unit id="tx_likeit_like.title">
+      <trans-unit id="tx_likeit_like.title" approved="yes">
         <source>Rating</source>
-        <target state="needs-translation">Rating</target>
+        <target state="final">Bewertung</target>
       </trans-unit>
-      <trans-unit id="tx_likeit_like.liked_uid">
+      <trans-unit id="tx_likeit_like.liked_uid" approved="yes">
         <source>Rated for uid</source>
-        <target state="needs-translation">Rated for uid</target>
+        <target state="final">Bewertet für UID</target>
       </trans-unit>
-      <trans-unit id="tx_likeit_like.liked_table">
+      <trans-unit id="tx_likeit_like.liked_table" approved="yes">
         <source>Rated for table</source>
-        <target state="needs-translation">Rated for table</target>
+        <target state="final">Bewertet für Tabelle</target>
       </trans-unit>
-      <trans-unit id="tx_likeit_like.cookie_value">
+      <trans-unit id="tx_likeit_like.cookie_value" approved="yes">
         <source>Cookie value (secret)</source>
-        <target state="needs-translation">Cookie value (secret)</target>
+        <target state="final">Cookie-Wert (geheim)</target>
       </trans-unit>
-      <trans-unit id="module.like_statistics.label">
+      <trans-unit id="module.like_statistics.label" approved="yes">
         <source>Like statistics</source>
-        <target state="translated">Like Statistik</target>
+        <target state="final">Like Statistik</target>
       </trans-unit>
     </body>
   </file>
