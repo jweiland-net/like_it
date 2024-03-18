@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2018-11-28T17:38:20Z" product-name="like_it" target-language="ja">
+    <header/>
+    <body>
+      <trans-unit id="tx_likeit_like.title">
+        <source>Rating</source>
+        <target state="needs-translation">Rating</target>
+      </trans-unit>
+      <trans-unit id="tx_likeit_like.liked_uid">
+        <source>Rated for uid</source>
+        <target state="needs-translation">Rated for uid</target>
+      </trans-unit>
+      <trans-unit id="tx_likeit_like.liked_table">
+        <source>Rated for table</source>
+        <target state="needs-translation">Rated for table</target>
+      </trans-unit>
+      <trans-unit id="tx_likeit_like.cookie_value">
+        <source>Cookie value (secret)</source>
+        <target state="needs-translation">Cookie value (secret)</target>
+      </trans-unit>
+      <trans-unit id="module.like_statistics.label">
+        <source>Like statistics</source>
+        <target state="needs-translation">Like statistics</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

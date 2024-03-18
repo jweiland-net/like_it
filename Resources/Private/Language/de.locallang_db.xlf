@@ -1,12 +1,28 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <xliff version="1.0">
-	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2018-11-28T17:38:20Z" product-name="like_it">
-		<header/>
-		<body>
-			<trans-unit id="module.like_statistics.label">
-				<source>Like statistics</source>
-				<target>Like Statistik</target>
-			</trans-unit>
-		</body>
-	</file>
+  <file source-language="en" datatype="plaintext" original="messages" date="2018-11-28T17:38:20Z" product-name="like_it" target-language="de">
+    <header/>
+    <body>
+      <trans-unit id="tx_likeit_like.title" approved="yes">
+        <source>Rating</source>
+        <target state="final">Bewertung</target>
+      </trans-unit>
+      <trans-unit id="tx_likeit_like.liked_uid" approved="yes">
+        <source>Rated for uid</source>
+        <target state="final">Bewertet für UID</target>
+      </trans-unit>
+      <trans-unit id="tx_likeit_like.liked_table" approved="yes">
+        <source>Rated for table</source>
+        <target state="final">Bewertet für Tabelle</target>
+      </trans-unit>
+      <trans-unit id="tx_likeit_like.cookie_value" approved="yes">
+        <source>Cookie value (secret)</source>
+        <target state="final">Cookie-Wert (geheim)</target>
+      </trans-unit>
+      <trans-unit id="module.like_statistics.label" approved="yes">
+        <source>Like statistics</source>
+        <target state="final">Like Statistik</target>
+      </trans-unit>
+    </body>
+  </file>
 </xliff>
