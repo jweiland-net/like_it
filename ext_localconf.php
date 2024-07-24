@@ -1,7 +1,5 @@
 <?php
-if (!defined('TYPO3_MODE')) {
-    die('Access denied.');
-}
+defined('TYPO3') or die();
 
 call_user_func(static function () {
     $GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['tx_likeit_like']
