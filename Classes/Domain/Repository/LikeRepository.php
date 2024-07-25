@@ -27,10 +27,10 @@ class LikeRepository
     {
         return $this
             ->getConnection()->select(['*'], self::TABLE_NAME, [
-            'liked_table' => $likedTable,
-            'liked_uid' => $likedUid,
-            'cookie_value' => $cookieValue,
-        ])->fetchAssociative() ?: [];
+                'liked_table' => $likedTable,
+                'liked_uid' => $likedUid,
+                'cookie_value' => $cookieValue,
+            ])->fetchAssociative() ?: [];
     }
 
     /**

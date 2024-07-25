@@ -15,7 +15,6 @@ use JWeiland\LikeIt\Domain\Repository\LikeRepository;
 use JWeiland\LikeIt\Service\LikedTableService;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
-use TYPO3\CMS\Backend\View\BackendTemplateView;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
