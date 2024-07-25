@@ -13,6 +13,8 @@ namespace JWeiland\LikeIt\Controller;
 
 use JWeiland\LikeIt\Domain\Repository\LikeRepository;
 use JWeiland\LikeIt\Service\LikedTableService;
+use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
 use TYPO3\CMS\Backend\View\BackendTemplateView;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
@@ -21,19 +23,6 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
  */
 class LikeModuleController extends ActionController
 {
-    /**
-     * The default view object to use if none of the resolved views can render
-     * a response for the current request.
-     *
-     * @var string
-     */
-    protected $defaultViewObjectName = BackendTemplateView::class;
-
-    /**
-     * @var BackendTemplateView
-     */
-    protected $view;
-
     /**
      * @var LikeRepository
      */
@@ -44,18 +33,18 @@ class LikeModuleController extends ActionController
      */
     protected $likedTableService;
 
-    public function injectLikeRepository(LikeRepository $likeRepository): void
-    {
+    public function __construct(
+        LikeRepository $likeRepository,
+        LikedTableService $likedTableService,
+        private ModuleTemplateFactory $moduleTemplateFactory
+    ) {
         $this->likeRepository = $likeRepository;
-    }
-
-    public function injectLikedTableService(LikedTableService $likedTableService): void
-    {
         $this->likedTableService = $likedTableService;
     }
 
-    public function listAction(string $table = ''): void
+    public function listAction(string $table = ''): ResponseInterface
     {
+        $moduleTemplate = $this->moduleTemplateFactory->create($this->request);
         $likedTables = $this->likedTableService->getArrayForTableSelection();
         $this->view->assign('likedTables', $likedTables);
 
@@ -68,5 +57,7 @@ class LikeModuleController extends ActionController
         if ($table) {
             $this->view->assign('likedTableItems', $this->likeRepository->findLikedTableItems($table));
         }
+        $moduleTemplate->setContent($this->view->render());
+        return $this->htmlResponse($moduleTemplate->renderContent());
     }
 }
