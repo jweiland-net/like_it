@@ -26,17 +26,11 @@ class LikeRepository
     public function findByRecord(string $likedTable, int $likedUid, string $cookieValue): array
     {
         return $this
-            ->getConnection()
-            ->select(
-                ['*'],
-                self::TABLE_NAME,
-                [
-                    'liked_table' => $likedTable,
-                    'liked_uid' => $likedUid,
-                    'cookie_value' => $cookieValue,
-                ]
-            )
-            ->fetch() ?: [];
+            ->getConnection()->select(['*'], self::TABLE_NAME, [
+            'liked_table' => $likedTable,
+            'liked_uid' => $likedUid,
+            'cookie_value' => $cookieValue,
+        ])->fetchAssociative() ?: [];
     }
 
     /**
@@ -46,14 +40,7 @@ class LikeRepository
     public function findAllInstalledLikedTables(): array
     {
         $rows = $this
-            ->getConnection()
-            ->select(
-                ['liked_table'],
-                self::TABLE_NAME,
-                [],
-                ['liked_table']
-            )
-            ->fetchAll();
+            ->getConnection()->select(['liked_table'], self::TABLE_NAME, [], ['liked_table'])->fetchAllAssociative();
 
         $tables = [];
         foreach ($rows as $row) {
@@ -153,13 +140,7 @@ class LikeRepository
     {
         $labelField = $GLOBALS['TCA'][$table]['ctrl']['label'];
         $row = $this
-            ->getConnection()
-            ->select(
-                [$labelField],
-                $table,
-                ['uid' => $uid]
-            )
-            ->fetch();
+            ->getConnection()->select([$labelField], $table, ['uid' => $uid])->fetchAssociative();
 
         if (!isset($row[$labelField])) {
             throw new \UnexpectedValueException(

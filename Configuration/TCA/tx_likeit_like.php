@@ -6,6 +6,9 @@ return [
         'tstamp' => 'tstamp',
         'title' => 'LLL:EXT:like_it/Resources/Private/Language/locallang_db.xlf:tx_likeit_like.title',
         'crdate' => 'crdate',
+        'security' => [
+            'ignorePageTypeRestriction' => true
+        ],
         'typeicon_classes' => [
             'default' => 'tx-likeit-thumbsup',
         ],
@@ -18,7 +21,8 @@ return [
                 'type' => 'input',
                 'size' => 8,
                 'max' => 80,
-                'eval' => 'required,num',
+                'eval' => 'num',
+                'required' => true,
             ],
         ],
         'liked_table' => [
@@ -27,16 +31,16 @@ return [
                 'type' => 'input',
                 'size' => 20,
                 'max' => 80,
-                'eval' => 'required,trim',
+                'eval' => 'trim',
+                'required' => true,
             ],
         ],
         'cookie_value' => [
             'label' => 'LLL:EXT:like_it/Resources/Private/Language/locallang_db.xlf:tx_likeit_like.cookie_value',
             'config' => [
-                'type' => 'input',
+                'type' => 'password',
                 'size' => 20,
-                'max' => 255,
-                'eval' => 'required,trim,password',
+                'hashed' => false,
             ],
         ],
     ],
