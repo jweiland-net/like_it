@@ -81,7 +81,7 @@ class LikeRepository
 
         $this->addHiddenAndDeleteFieldCheck($queryBuilder, 'l', $table);
 
-        $rows = $queryBuilder->execute()->fetchAll();
+        $rows = $queryBuilder->executeQuery()->fetchAllAssociative();
 
         $items = [];
         foreach ($rows as $row) {
