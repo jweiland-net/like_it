@@ -21,7 +21,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class LikeRepository
 {
-    private const TABLE_NAME = 'tx_likeit_like';
+    private const string TABLE_NAME = 'tx_likeit_like';
 
     public function findByRecord(string $likedTable, int $likedUid, string $cookieValue): array
     {

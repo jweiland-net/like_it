@@ -35,7 +35,7 @@ class LikeModuleController extends ActionController
     public function __construct(
         LikeRepository $likeRepository,
         LikedTableService $likedTableService,
-        private ModuleTemplateFactory $moduleTemplateFactory
+        private readonly ModuleTemplateFactory $moduleTemplateFactory
     ) {
         $this->likeRepository = $likeRepository;
         $this->likedTableService = $likedTableService;

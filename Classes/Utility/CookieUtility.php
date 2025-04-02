@@ -29,10 +29,10 @@ class CookieUtility
     public static function getCookieValue(): string
     {
         if (isset($_COOKIE[self::COOKIE_NAME]) && $_COOKIE[self::COOKIE_NAME]) {
-            $cookieValue = trim($_COOKIE[self::COOKIE_NAME]);
+            $cookieValue = trim((string) $_COOKIE[self::COOKIE_NAME]);
         } else {
             $cookieValue = StringUtility::getUniqueId();
-            if (!setcookie(self::COOKIE_NAME, $cookieValue, 2147483647)) {
+            if (!setcookie(self::COOKIE_NAME, $cookieValue, ['expires' => 2147483647])) {
                 throw new CouldNotSetCookieException(
                     'Could net set a cookie named ' . self::COOKIE_NAME . '!',
                     1543419469332
