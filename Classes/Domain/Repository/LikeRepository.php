@@ -21,22 +21,16 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class LikeRepository
 {
-    private const TABLE_NAME = 'tx_likeit_like';
+    private const string TABLE_NAME = 'tx_likeit_like';
 
     public function findByRecord(string $likedTable, int $likedUid, string $cookieValue): array
     {
         return $this
-            ->getConnection()
-            ->select(
-                ['*'],
-                self::TABLE_NAME,
-                [
-                    'liked_table' => $likedTable,
-                    'liked_uid' => $likedUid,
-                    'cookie_value' => $cookieValue,
-                ]
-            )
-            ->fetch() ?: [];
+            ->getConnection()->select(['*'], self::TABLE_NAME, [
+                'liked_table' => $likedTable,
+                'liked_uid' => $likedUid,
+                'cookie_value' => $cookieValue,
+            ])->fetchAssociative() ?: [];
     }
 
     /**
@@ -46,14 +40,7 @@ class LikeRepository
     public function findAllInstalledLikedTables(): array
     {
         $rows = $this
-            ->getConnection()
-            ->select(
-                ['liked_table'],
-                self::TABLE_NAME,
-                [],
-                ['liked_table']
-            )
-            ->fetchAll();
+            ->getConnection()->select(['liked_table'], self::TABLE_NAME, [], ['liked_table'])->fetchAllAssociative();
 
         $tables = [];
         foreach ($rows as $row) {
@@ -94,7 +81,7 @@ class LikeRepository
 
         $this->addHiddenAndDeleteFieldCheck($queryBuilder, 'l', $table);
 
-        $rows = $queryBuilder->execute()->fetchAll();
+        $rows = $queryBuilder->executeQuery()->fetchAllAssociative();
 
         $items = [];
         foreach ($rows as $row) {
@@ -153,13 +140,7 @@ class LikeRepository
     {
         $labelField = $GLOBALS['TCA'][$table]['ctrl']['label'];
         $row = $this
-            ->getConnection()
-            ->select(
-                [$labelField],
-                $table,
-                ['uid' => $uid]
-            )
-            ->fetch();
+            ->getConnection()->select([$labelField], $table, ['uid' => $uid])->fetchAssociative();
 
         if (!isset($row[$labelField])) {
             throw new \UnexpectedValueException(

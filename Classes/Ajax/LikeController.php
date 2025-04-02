@@ -16,7 +16,7 @@ use JWeiland\LikeIt\Utility\CookieUtility;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Http\JsonResponse;
-use TYPO3\CMS\Core\Localization\LanguageService;
+use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -52,9 +52,14 @@ class LikeController
      */
     protected $table = '';
 
+    protected ServerRequestInterface $request;
+
+    public function __construct(
+        private readonly LanguageServiceFactory $LanguageServiceFactory,
+    ) {}
+
     public function processRequest(ServerRequestInterface $request): ResponseInterface
     {
-        $this->initializeLanguage();
         $this->initializeCookie();
         $this->initializeForeignData($request);
         $this->likeRepository = GeneralUtility::makeInstance(LikeRepository::class);
@@ -77,14 +82,6 @@ class LikeController
         }
 
         return new JsonResponse($this->responseArray);
-    }
-
-    protected function initializeLanguage(): void
-    {
-        if (!isset($GLOBALS['LANG']) || !\is_object($GLOBALS['LANG'])) {
-            $GLOBALS['LANG'] = GeneralUtility::makeInstance(LanguageService::class);
-            $GLOBALS['LANG']->init('default');
-        }
     }
 
     protected function initializeCookie(): void
@@ -114,7 +111,8 @@ class LikeController
 
     protected function translate(string $key): string
     {
-        return $GLOBALS['LANG']->sL('LLL:EXT:like_it/Resources/Private/Language/locallang.xlf:' . $key);
+        return $this->LanguageServiceFactory
+           ->create('default')->sL('LLL:EXT:like_it/Resources/Private/Language/locallang.xlf:' . $key);
     }
 
     /**

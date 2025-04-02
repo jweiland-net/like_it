@@ -42,7 +42,7 @@ class LikedTableService
             }
 
             $title = $GLOBALS['TCA'][$table]['ctrl']['title'];
-            if (str_starts_with($title, 'LLL:')) {
+            if (str_starts_with((string) $title, 'LLL:')) {
                 $title = $this->getLanguageService()->sL($title);
             }
 
