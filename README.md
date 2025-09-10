@@ -31,3 +31,9 @@ Download and install `like_it` with the extension manager module.
 
 Please read documentation how to implement `like_it` into your
 or a foreign extension.
+
+## 3 Support
+
+Free Support is available via [GitHub Issue Tracker](https://github.com/jweiland-net/like_it/issues).
+
+For commercial support, please contact us at [support@jweiland.net](support@jweiland.net).
