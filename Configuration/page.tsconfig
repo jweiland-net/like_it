@@ -1,0 +1,2 @@
+# To reduce interferences with FE layout we have moved all BE related stuff into "Backend" folder
+templates.jweiland/like-it.1765449295 = jweiland/like-it:Resources/Private/Backend

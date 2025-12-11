@@ -1,5 +1,12 @@
 <?php
 
+/*
+ * This file is part of the package jweiland/like-it.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE file that was distributed with this source code.
+ */
+
 return [
     'ctrl' => [
         'label' => 'uid',
@@ -8,6 +15,9 @@ return [
         'crdate' => 'crdate',
         'typeicon_classes' => [
             'default' => 'tx-likeit-thumbsup',
+        ],
+        'security' => [
+            'ignorePageTypeRestriction' => true,
         ],
         'searchFields' => '',
     ],

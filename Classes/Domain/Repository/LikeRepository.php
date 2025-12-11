@@ -11,10 +11,10 @@ declare(strict_types=1);
 
 namespace JWeiland\LikeIt\Domain\Repository;
 
+use JWeiland\LikeIt\Configuration\LikeConfiguration;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Repository to add, remove or check for existing like records
@@ -23,7 +23,11 @@ class LikeRepository
 {
     private const TABLE_NAME = 'tx_likeit_like';
 
-    public function findByRecord(string $likedTable, int $likedUid, string $cookieValue): array
+    public function __construct(
+        protected readonly ConnectionPool $connectionPool,
+    ) {}
+
+    public function findByRecord(LikeConfiguration $likeConfiguration): array
     {
         return $this
             ->getConnection()
@@ -31,12 +35,12 @@ class LikeRepository
                 ['*'],
                 self::TABLE_NAME,
                 [
-                    'liked_table' => $likedTable,
-                    'liked_uid' => $likedUid,
-                    'cookie_value' => $cookieValue,
-                ]
+                    'liked_table' => $likeConfiguration->getTable(),
+                    'liked_uid' => $likeConfiguration->getUid(),
+                    'cookie_value' => $likeConfiguration->getCookieValue(),
+                ],
             )
-            ->fetch() ?: [];
+            ->fetchAssociative() ?: [];
     }
 
     /**
@@ -51,9 +55,9 @@ class LikeRepository
                 ['liked_table'],
                 self::TABLE_NAME,
                 [],
-                ['liked_table']
+                ['liked_table'],
             )
-            ->fetchAll();
+            ->fetchAllAssociative();
 
         $tables = [];
         foreach ($rows as $row) {
@@ -70,15 +74,15 @@ class LikeRepository
     /**
      * Find liked table items for $table. This will add the label
      * of the records using TCA of $table.
-     * e.g. findLikedTableItems('tx_news_domain_model_news')
-     * will return sth. like: '[1 => ['label' => 'Hello World', 'amount' => 512], 23 => 'label' => 'My new garden', 'amount' => 23]]
+     * E.g., findLikedTableItems('tx_news_domain_model_news')
+     * will return sth. Like: '[1 => ['label' => 'Hello World', 'amount' => 512], 23 => 'label' => 'My new garden', 'amount' => 23]]
      */
     public function findLikedTableItems(string $table): array
     {
         if (!isset($GLOBALS['TCA'][$table])) {
             throw new \UnexpectedValueException(
                 'Could not find "' . $table . '" in TCA!',
-                1543591232519
+                1765460495,
             );
         }
 
@@ -94,7 +98,9 @@ class LikeRepository
 
         $this->addHiddenAndDeleteFieldCheck($queryBuilder, 'l', $table);
 
-        $rows = $queryBuilder->execute()->fetchAll();
+        $rows = $queryBuilder
+            ->executeQuery()
+            ->fetchAllAssociative();
 
         $items = [];
         foreach ($rows as $row) {
@@ -118,27 +124,27 @@ class LikeRepository
         QueryBuilder $queryBuilder,
         string $fromAlias,
         string $table,
-        string $joinAlias = 'e'
+        string $joinAlias = 'e',
     ): QueryBuilder {
         $queryBuilder->leftJoin(
             $fromAlias,
             $table,
             $joinAlias,
-            sprintf('%s.uid = %s.liked_uid', $joinAlias, $fromAlias)
+            sprintf('%s.uid = %s.liked_uid', $joinAlias, $fromAlias),
         );
 
         // Respect delete and disabled fields
         if (isset($GLOBALS['TCA'][$table]['ctrl']['delete'])) {
             $queryBuilder->andWhere($queryBuilder->expr()->eq(
                 $joinAlias . '.' . $GLOBALS['TCA'][$table]['ctrl']['delete'],
-                0
+                0,
             ));
         }
 
         if (isset($GLOBALS['TCA'][$table]['ctrl']['enablecolumns']['disabled'])) {
             $queryBuilder->andWhere($queryBuilder->expr()->eq(
                 $joinAlias . '.' . $GLOBALS['TCA'][$table]['ctrl']['enablecolumns']['disabled'],
-                0
+                0,
             ));
         }
 
@@ -146,7 +152,7 @@ class LikeRepository
     }
 
     /**
-     * Find label for a record from $table with uid $uid.
+     * Find a label for a record from $table with uid $uid.
      * This will only work if the table is registered in TCA!
      */
     protected function findLabelForTableItem(string $table, int $uid): string
@@ -157,14 +163,14 @@ class LikeRepository
             ->select(
                 [$labelField],
                 $table,
-                ['uid' => $uid]
+                ['uid' => $uid],
             )
-            ->fetch();
+            ->fetchAssociative();
 
         if (!isset($row[$labelField])) {
             throw new \UnexpectedValueException(
                 'Could not find "' . $table . '" with uid "' . $uid . '".',
-                1543591329803
+                1765460530,
             );
         }
 
@@ -175,45 +181,53 @@ class LikeRepository
     {
         return $this
             ->getConnection()
-            ->count('*', self::TABLE_NAME, ['liked_table' => $likedTable, 'liked_uid' => $likedUid]);
+            ->count(
+                '*',
+                self::TABLE_NAME,
+                [
+                    'liked_table' => $likedTable,
+                    'liked_uid' => $likedUid,
+                ],
+            );
     }
 
     /**
      * @return int number of affected rows
      */
-    public function removeByRecord(string $likedTable, int $likedUid, string $cookieValue): int
+    public function removeByRecord(LikeConfiguration $likeConfiguration): int
     {
         return $this
             ->getConnection()
             ->delete(
                 self::TABLE_NAME,
                 [
-                    'liked_table' => $likedTable,
-                    'liked_uid' => $likedUid,
-                    'cookie_value' => $cookieValue,
-                ]
+                    'liked_table' => $likeConfiguration->getTable(),
+                    'liked_uid' => $likeConfiguration->getUid(),
+                    'cookie_value' => $likeConfiguration->getCookieValue(),
+                ],
             );
     }
 
-    public function insertRecord(string $likedTable, int $likedUid, string $cookieValue): int
+    public function insertRecord(LikeConfiguration $likeConfiguration): int
     {
         $time = time();
+
         return $this
             ->getConnection()
             ->insert(
                 self::TABLE_NAME,
                 [
-                    'liked_table' => $likedTable,
-                    'liked_uid' => $likedUid,
-                    'cookie_value' => $cookieValue,
+                    'liked_table' => $likeConfiguration->getTable(),
+                    'liked_uid' => $likeConfiguration->getUid(),
+                    'cookie_value' => $likeConfiguration->getCookieValue(),
                     'crdate' => $time,
                     'tstamp' => $time,
-                ]
+                ],
             );
     }
 
     protected function getConnection(): Connection
     {
-        return GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable(self::TABLE_NAME);
+        return $this->connectionPool->getConnectionForTable(self::TABLE_NAME);
     }
 }

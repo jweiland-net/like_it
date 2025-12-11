@@ -14,9 +14,6 @@ namespace JWeiland\LikeIt\Utility;
 use JWeiland\LikeIt\Exception\CouldNotSetCookieException;
 use TYPO3\CMS\Core\Utility\StringUtility;
 
-/**
- * Class CookieUtility
- */
 class CookieUtility
 {
     public const COOKIE_NAME = 'tx_likeit';
@@ -35,7 +32,7 @@ class CookieUtility
             if (!setcookie(self::COOKIE_NAME, $cookieValue, 2147483647)) {
                 throw new CouldNotSetCookieException(
                     'Could net set a cookie named ' . self::COOKIE_NAME . '!',
-                    1543419469332
+                    1765460402,
                 );
             }
         }

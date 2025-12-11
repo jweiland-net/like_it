@@ -1,16 +1,26 @@
-.. include:: /Includes.rst.txt
+..  include:: /Includes.rst.txt
 
 
-.. _upgrade:
+..  _upgrade:
 
+=======
 Upgrade
 =======
 
 If you update EXT:like_it to a newer version, please read this section
 carefully!
 
+Update to Version 3.0.0
+=======================
+
+We have removed TYPO3 10 and 11 compatibility.
+
+ViewHelper AmountOfLikes has beed removed. All numbers of likes are collected
+via an AJAX call. Please try to keep the CSS classes in sync with templates
+of EXT:like_it.
+
 Update to Version 2.0.0
------------------------
+=======================
 
 With TYPO3 v10 the fluid widget integration was deprecated and will be remove.
 That's why we have to completely restructure our `like_it` extension.

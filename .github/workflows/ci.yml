@@ -1,73 +1,37 @@
-# Adapted from https://github.com/TYPO3GmbH/blog/blob/master/.github/workflows/ci.yml
-name: CI
+name: Tests
 
 on: [pull_request]
 
 jobs:
-  code-quality:
+  testing:
+    name: Testing
+
     runs-on: ubuntu-latest
 
     strategy:
-      fail-fast: false
+      fail-fast: true
+
       matrix:
-        typo3: [^10.4, ^11.5]
-        php: ['7.4']
-        include:
-        - typo3: ^11.5
-          php: '8.0'
+        php:
+          - '8.1'
+          - '8.2'
+          - '8.3'
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
+      - name: 'Checkout'
+        uses: actions/checkout@v4
 
-    - name: Setup PHP ${{ matrix.php }}, with composer and extensions
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: ${{ matrix.php }}
-        extensions: mbstring, dom, zip, mysql
+      - name: 'Lint PHP'
+        run: Build/Scripts/runTests.sh -p ${{ matrix.php }} -s lint
 
-    - name: Validate composer.json and composer.lock
-      run: composer validate
+      - name: 'Install testing system'
+        run: Build/Scripts/runTests.sh -p ${{ matrix.php }} -s composerUpdate
 
-    - name: Install dependencies with typo3/cms-core:${{ matrix.typo3 }}
-      run: |
-        composer require typo3/cms-core:${{ matrix.typo3 }} --no-progress
-        git checkout composer.json
+      - name: 'Composer validate'
+        run: Build/Scripts/runTests.sh -p ${{ matrix.php }} -s composerValidate
 
-    - name: php-cs-fixer
-      run: composer ci:php:fixer
+      - name: 'Composer normalize'
+        run: Build/Scripts/runTests.sh -p ${{ matrix.php }} -s composerNormalize -n
 
-    - name: Lint PHP
-      run: composer ci:php:lint
-
-  # Target files will be overwritten
-  minify:
-    needs: code-quality
-    runs-on: ubuntu-latest
-
-    permissions:
-      # Give the default GITHUB_TOKEN write permission to commit and push the
-      # added or changed files to the repository.
-      contents: write
-
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-      with:
-        ref: ${{ github.ref }}
-
-    - name: Minify CSS with Web minifier
-      uses: nizarmah/auto-minify@v2.1
-      with:
-        directory: 'Resources/Public/Css'
-
-    - name: Minify JavaScript with Web minifier
-      uses: nizarmah/auto-minify@v2.1
-      with:
-        directory: 'Resources/Public/JavaScript'
-
-    - name: Auto committing minified CSS/JS files
-      uses: stefanzweifel/git-auto-commit-action@v4
-      with:
-        commit_message: "Github Action: Auto Minified JS and CSS files"
-        file_pattern: 'Resources/Public/Css/*.min.css Resources/Public/JavaScript/*.min.js'
+      - name: 'CGL'
+        run: Build/Scripts/runTests.sh -n -p ${{ matrix.php }} -s cgl
