@@ -69,10 +69,10 @@ class LikeMiddleware implements MiddlewareInterface
     {
         if (
             !$this->likeRepository->findByRecord($likeConfiguration)
-            && !$this->likeRepository->insertRecord($likeConfiguration),
+            && !$this->likeRepository->insertRecord($likeConfiguration)
         ) {
             $likeConfiguration->addErrorMessage(
-                $this->translate('message.could_not_add_like', $languageService)
+                $this->translate('message.could_not_add_like', $languageService),
             );
         }
     }
