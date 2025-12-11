@@ -26,9 +26,11 @@
 		"typo3/cms-core": "^12.4.40"
 	},
 	"require-dev": {
+		"ergebnis/composer-normalize": "^2.44",
+		"friendsofphp/php-cs-fixer": "^3.65",
 		"roave/security-advisories": "dev-latest",
-		"friendsofphp/php-cs-fixer": "^3.10",
-		"nimut/testing-framework": "^6.0"
+		"typo3/coding-standards": "^0.8",
+		"typo3/testing-framework": "^8.2"
 	},
 	"replace": {
 		"typo3-ter/like_it": "self.version"
@@ -39,23 +41,20 @@
 		}
 	},
 	"config": {
-		"vendor-dir": ".build/vendor",
 		"allow-plugins": {
+			"ergebnis/composer-normalize": true,
 			"typo3/class-alias-loader": true,
 			"typo3/cms-composer-installers": true
-		}
+		},
+		"bin-dir": ".Build/bin",
+		"sort-packages": true,
+		"vendor-dir": ".Build/vendor"
 	},
 	"extra": {
 		"typo3/cms": {
+			"app-dir": ".Build",
 			"extension-key": "like_it",
-			"app-dir": ".build",
-			"web-dir": ".build/public"
+			"web-dir": ".Build/web"
 		}
-	},
-	"scripts": {
-		"php:fix": ".build/vendor/bin/php-cs-fixer --config=Build/php-cs-fixer/config.php fix Classes",
-		"ci:php:lint": "find *.php Classes Configuration -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l",
-		"ci:php:fixer": ".build/vendor/bin/php-cs-fixer --config=Build/php-cs-fixer/config.php fix --dry-run -v --show-progress=dots --diff Classes",
-		"ci:tests:unit": ".build/vendor/bin/phpunit -c .build/vendor/nimut/testing-framework/res/Configuration/UnitTests.xml Tests/Unit"
 	}
 }
