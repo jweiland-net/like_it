@@ -10,6 +10,13 @@ Upgrade
 If you update EXT:like_it to a newer version, please read this section
 carefully!
 
+Update to Version 4.0.0
+=======================
+
+We have removed TYPO3 12 compatibility.
+
+No active items to track.
+
 Update to Version 3.0.0
 =======================
 
