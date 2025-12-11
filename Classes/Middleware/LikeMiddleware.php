@@ -20,10 +20,10 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use TYPO3\CMS\Core\Http\JsonResponse;
 
-readonly class LikeMiddleware implements MiddlewareInterface
+class LikeMiddleware implements MiddlewareInterface
 {
     public function __construct(
-        protected LikeRepository $likeRepository,
+        protected readonly LikeRepository $likeRepository,
     ) {}
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
