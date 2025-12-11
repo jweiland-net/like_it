@@ -19,11 +19,14 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use TYPO3\CMS\Core\Http\JsonResponse;
+use TYPO3\CMS\Core\Localization\LanguageService;
+use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 
 class LikeMiddleware implements MiddlewareInterface
 {
     public function __construct(
         protected readonly LikeRepository $likeRepository,
+        protected readonly LanguageServiceFactory $languageServiceFactory,
     ) {}
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
@@ -35,19 +38,22 @@ class LikeMiddleware implements MiddlewareInterface
         $postParameters = json_decode((string)$request->getBody(), true);
 
         $likeConfiguration = $this->getLikeRequest($postParameters);
+        $languageService = $this->languageServiceFactory->createFromSiteLanguage(
+            $request->getAttribute('language'),
+        );
 
         switch (isset($postParameters['action']) ? (string)$postParameters['action'] : '') {
             case 'add':
-                $this->addAction($likeConfiguration);
+                $this->addAction($likeConfiguration, $languageService);
                 break;
             case 'check':
                 $this->checkAction($likeConfiguration);
                 break;
             case 'remove':
-                $this->removeAction($likeConfiguration);
+                $this->removeAction($likeConfiguration, $languageService);
                 break;
             case 'toggle':
-                $this->toggleAction($likeConfiguration);
+                $this->toggleAction($likeConfiguration, $languageService);
                 break;
             default:
                 throw new \UnexpectedValueException('No or unknown action passed!', 1543418482439);
@@ -56,21 +62,18 @@ class LikeMiddleware implements MiddlewareInterface
         return new JsonResponse($likeConfiguration->getResponseArray());
     }
 
-    protected function translate(string $key): string
-    {
-        return $GLOBALS['LANG']->sL('LLL:EXT:like_it/Resources/Private/Language/locallang.xlf:' . $key);
-    }
-
     /**
      * Add a new like
      */
-    protected function addAction(LikeConfiguration $likeConfiguration): void
+    protected function addAction(LikeConfiguration $likeConfiguration, LanguageService $languageService): void
     {
         if (
             !$this->likeRepository->findByRecord($likeConfiguration)
             && !$this->likeRepository->insertRecord($likeConfiguration)
         ) {
-            $likeConfiguration->addErrorMessage($this->translate('message.could_not_add_like'));
+            $likeConfiguration->addErrorMessage(
+                $this->translate('message.could_not_add_like', $languageService)
+            );
         }
     }
 
@@ -96,10 +99,12 @@ class LikeMiddleware implements MiddlewareInterface
     /**
      * Remove a like for foreign table and uid with cookieValue
      */
-    protected function removeAction(LikeConfiguration $likeConfiguration): void
+    protected function removeAction(LikeConfiguration $likeConfiguration, LanguageService $languageService): void
     {
         if (!$this->likeRepository->removeByRecord($likeConfiguration)) {
-            $likeConfiguration->addErrorMessage($this->translate('message.could_not_remove_like'));
+            $likeConfiguration->addErrorMessage(
+                $this->translate('message.could_not_remove_like', $languageService)
+            );
         }
     }
 
@@ -107,15 +112,20 @@ class LikeMiddleware implements MiddlewareInterface
      * Toggle like for liked table and uid with cookieValue.
      * Will additionally execute the checkAction to provide the values liked and amountOfLikes.
      */
-    protected function toggleAction(LikeConfiguration $likeConfiguration): void
+    protected function toggleAction(LikeConfiguration $likeConfiguration, LanguageService $languageService): void
     {
         if ($this->likeRepository->findByRecord($likeConfiguration)) {
-            $this->removeAction($likeConfiguration);
+            $this->removeAction($likeConfiguration, $languageService);
         } else {
-            $this->addAction($likeConfiguration);
+            $this->addAction($likeConfiguration, $languageService);
         }
 
         $this->checkAction($likeConfiguration);
+    }
+
+    protected function translate(string $key, LanguageService $languageService): string
+    {
+        return $languageService->sL('LLL:EXT:like_it/Resources/Private/Language/locallang.xlf:' . $key);
     }
 
     protected function getLikeRequest(array $postParameters): LikeConfiguration
