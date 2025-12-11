@@ -91,8 +91,8 @@ class LikeMiddleware implements MiddlewareInterface
         $likeConfiguration->setAmountOfLikes(
             $this->likeRepository->countByRecord(
                 $likeConfiguration->getTable(),
-                $likeConfiguration->getUid()
-            )
+                $likeConfiguration->getUid(),
+            ),
         );
     }
 

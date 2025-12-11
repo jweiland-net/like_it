@@ -32,7 +32,7 @@ class CookieUtility
             if (!setcookie(self::COOKIE_NAME, $cookieValue, 2147483647)) {
                 throw new CouldNotSetCookieException(
                     'Could net set a cookie named ' . self::COOKIE_NAME . '!',
-                    1543419469332
+                    1765460402,
                 );
             }
         }

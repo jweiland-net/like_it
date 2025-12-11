@@ -38,7 +38,7 @@ class LikeRepository
                     'liked_table' => $likeConfiguration->getTable(),
                     'liked_uid' => $likeConfiguration->getUid(),
                     'cookie_value' => $likeConfiguration->getCookieValue(),
-                ]
+                ],
             )
             ->fetchAssociative() ?: [];
     }
@@ -55,7 +55,7 @@ class LikeRepository
                 ['liked_table'],
                 self::TABLE_NAME,
                 [],
-                ['liked_table']
+                ['liked_table'],
             )
             ->fetchAllAssociative();
 
@@ -74,15 +74,15 @@ class LikeRepository
     /**
      * Find liked table items for $table. This will add the label
      * of the records using TCA of $table.
-     * e.g. findLikedTableItems('tx_news_domain_model_news')
-     * will return sth. like: '[1 => ['label' => 'Hello World', 'amount' => 512], 23 => 'label' => 'My new garden', 'amount' => 23]]
+     * E.g., findLikedTableItems('tx_news_domain_model_news')
+     * will return sth. Like: '[1 => ['label' => 'Hello World', 'amount' => 512], 23 => 'label' => 'My new garden', 'amount' => 23]]
      */
     public function findLikedTableItems(string $table): array
     {
         if (!isset($GLOBALS['TCA'][$table])) {
             throw new \UnexpectedValueException(
                 'Could not find "' . $table . '" in TCA!',
-                1543591232519
+                1765460495,
             );
         }
 
@@ -124,27 +124,27 @@ class LikeRepository
         QueryBuilder $queryBuilder,
         string $fromAlias,
         string $table,
-        string $joinAlias = 'e'
+        string $joinAlias = 'e',
     ): QueryBuilder {
         $queryBuilder->leftJoin(
             $fromAlias,
             $table,
             $joinAlias,
-            sprintf('%s.uid = %s.liked_uid', $joinAlias, $fromAlias)
+            sprintf('%s.uid = %s.liked_uid', $joinAlias, $fromAlias),
         );
 
         // Respect delete and disabled fields
         if (isset($GLOBALS['TCA'][$table]['ctrl']['delete'])) {
             $queryBuilder->andWhere($queryBuilder->expr()->eq(
                 $joinAlias . '.' . $GLOBALS['TCA'][$table]['ctrl']['delete'],
-                0
+                0,
             ));
         }
 
         if (isset($GLOBALS['TCA'][$table]['ctrl']['enablecolumns']['disabled'])) {
             $queryBuilder->andWhere($queryBuilder->expr()->eq(
                 $joinAlias . '.' . $GLOBALS['TCA'][$table]['ctrl']['enablecolumns']['disabled'],
-                0
+                0,
             ));
         }
 
@@ -163,14 +163,14 @@ class LikeRepository
             ->select(
                 [$labelField],
                 $table,
-                ['uid' => $uid]
+                ['uid' => $uid],
             )
             ->fetchAssociative();
 
         if (!isset($row[$labelField])) {
             throw new \UnexpectedValueException(
                 'Could not find "' . $table . '" with uid "' . $uid . '".',
-                1543591329803
+                1765460530,
             );
         }
 
@@ -186,7 +186,7 @@ class LikeRepository
                 self::TABLE_NAME,
                 [
                     'liked_table' => $likedTable,
-                    'liked_uid' => $likedUid
+                    'liked_uid' => $likedUid,
                 ],
             );
     }
@@ -204,7 +204,7 @@ class LikeRepository
                     'liked_table' => $likeConfiguration->getTable(),
                     'liked_uid' => $likeConfiguration->getUid(),
                     'cookie_value' => $likeConfiguration->getCookieValue(),
-                ]
+                ],
             );
     }
 
@@ -222,7 +222,7 @@ class LikeRepository
                     'cookie_value' => $likeConfiguration->getCookieValue(),
                     'crdate' => $time,
                     'tstamp' => $time,
-                ]
+                ],
             );
     }
 
