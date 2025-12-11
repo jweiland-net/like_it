@@ -22,11 +22,11 @@ use TYPO3\CMS\Core\Http\JsonResponse;
 use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 
-class LikeMiddleware implements MiddlewareInterface
+readonly class LikeMiddleware implements MiddlewareInterface
 {
     public function __construct(
-        protected readonly LikeRepository $likeRepository,
-        protected readonly LanguageServiceFactory $languageServiceFactory,
+        protected LikeRepository $likeRepository,
+        protected LanguageServiceFactory $languageServiceFactory,
     ) {}
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
