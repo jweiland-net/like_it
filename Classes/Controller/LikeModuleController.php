@@ -13,60 +13,35 @@ namespace JWeiland\LikeIt\Controller;
 
 use JWeiland\LikeIt\Domain\Repository\LikeRepository;
 use JWeiland\LikeIt\Service\LikedTableService;
-use TYPO3\CMS\Backend\View\BackendTemplateView;
+use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
-/**
- * Class LikeModuleController
- */
 class LikeModuleController extends ActionController
 {
-    /**
-     * The default view object to use if none of the resolved views can render
-     * a response for the current request.
-     *
-     * @var string
-     */
-    protected $defaultViewObjectName = BackendTemplateView::class;
+    public function __construct(
+        protected readonly LikeRepository $likeRepository,
+        protected readonly LikedTableService $likedTableService,
+        protected readonly ModuleTemplateFactory $moduleTemplateFactory,
+    ) {}
 
-    /**
-     * @var BackendTemplateView
-     */
-    protected $view;
-
-    /**
-     * @var LikeRepository
-     */
-    protected $likeRepository;
-
-    /**
-     * @var LikedTableService
-     */
-    protected $likedTableService;
-
-    public function injectLikeRepository(LikeRepository $likeRepository): void
+    public function listAction(string $table = ''): ResponseInterface
     {
-        $this->likeRepository = $likeRepository;
-    }
+        $moduleTemplate = $this->moduleTemplateFactory->create($this->request);
 
-    public function injectLikedTableService(LikedTableService $likedTableService): void
-    {
-        $this->likedTableService = $likedTableService;
-    }
-
-    public function listAction(string $table = ''): void
-    {
         $likedTables = $this->likedTableService->getArrayForTableSelection();
-        $this->view->assign('likedTables', $likedTables);
+        $moduleTemplate->assign('likedTables', $likedTables);
 
         if (!$table) {
             $table = (string)key($likedTables);
         }
 
-        $this->view->assign('table', $table);
+        $moduleTemplate->assign('table', $table);
 
         if ($table) {
-            $this->view->assign('likedTableItems', $this->likeRepository->findLikedTableItems($table));
+            $moduleTemplate->assign('likedTableItems', $this->likeRepository->findLikedTableItems($table));
         }
+
+        return $moduleTemplate->renderResponse('LikeModule/List');
     }
 }

@@ -11,6 +11,4 @@ declare(strict_types=1);
 
 namespace JWeiland\LikeIt\Exception;
 
-class CouldNotSetCookieException extends \Exception
-{
-}
+class CouldNotSetCookieException extends \Exception {}

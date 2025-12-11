@@ -14,9 +14,6 @@ namespace JWeiland\LikeIt\Utility;
 use JWeiland\LikeIt\Exception\CouldNotSetCookieException;
 use TYPO3\CMS\Core\Utility\StringUtility;
 
-/**
- * Class CookieUtility
- */
 class CookieUtility
 {
     public const COOKIE_NAME = 'tx_likeit';

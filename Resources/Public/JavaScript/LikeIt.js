@@ -24,7 +24,21 @@ document.addEventListener('DOMContentLoaded', function () {
     let table = likeItContainer.getAttribute('data-table');
     let uid = parseInt(likeItContainer.getAttribute('data-uid'));
 
-    fetch('/index.php?eID=tx_likeit_like&action=' + action + '&table=' + table + '&uid=' + uid)
+    fetch(
+      '/',
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'ext-like-it': 'handleLikes'
+        },
+        method: 'POST',
+        body: JSON.stringify({
+          action: action,
+          table: table,
+          uid: uid,
+        }),
+      }
+    )
       .then(function (response) {
         return response.json();
       })

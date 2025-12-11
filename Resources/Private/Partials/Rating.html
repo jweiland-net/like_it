@@ -1,6 +1,5 @@
 <html lang="en"
       xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-      xmlns:l="http://typo3.org/ns/JWeiland/LikeIt/ViewHelpers"
       data-namespace-typo3-fluid="true">
 
 <f:asset.css identifier="ExtLikeIt" href="EXT:like_it/Resources/Public/Css/LikeIt.min.css"/>
@@ -17,9 +16,7 @@
     </a>
 
     <p class="tx-likeit-amount-of-likes">
-        <f:variable name="amountOfLikes">{l:amountOfLikes(table: table, uid: uid)}</f:variable>
-        {f:translate(key: 'message.amount_of_likes', extensionName: 'LikeIt', arguments:
-        '{0:amountOfLikes}')->f:format.raw()}
+        {f:translate(key: 'message.amount_of_likes', extensionName: 'LikeIt', arguments: '{0: 0}')->f:format.raw()}
     </p>
 </div>
 

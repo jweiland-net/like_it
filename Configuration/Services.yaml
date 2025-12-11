@@ -1,0 +1,13 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  JWeiland\LikeIt\:
+    resource: '../Classes/*'
+    exclude:
+      - '../Classes/Configuration/*'
+
+  JWeiland\LikeIt\Ajax\LikeController:
+    public: true

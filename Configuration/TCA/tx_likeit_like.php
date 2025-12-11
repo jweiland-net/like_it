@@ -9,6 +9,9 @@ return [
         'typeicon_classes' => [
             'default' => 'tx-likeit-thumbsup',
         ],
+        'security' => [
+            'ignorePageTypeRestriction' => true,
+        ],
         'searchFields' => '',
     ],
     'columns' => [

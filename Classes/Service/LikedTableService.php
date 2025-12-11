@@ -14,20 +14,11 @@ namespace JWeiland\LikeIt\Service;
 use JWeiland\LikeIt\Domain\Repository\LikeRepository;
 use TYPO3\CMS\Core\Localization\LanguageService;
 
-/**
- * Class LikedTableService
- */
-class LikedTableService
+readonly class LikedTableService
 {
-    /**
-     * @var LikeRepository
-     */
-    protected $likeRepository;
-
-    public function __construct(LikeRepository $likeRepository)
-    {
-        $this->likeRepository = $likeRepository;
-    }
+    public function __construct(
+        protected LikeRepository $likeRepository
+    ) {}
 
     /**
      * Get array for table selection
