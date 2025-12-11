@@ -17,14 +17,14 @@ use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 
 /**
- * Repository to add, remove or check for existing like records
+ * Repository to add, remove, or check for existing like records
  */
-class LikeRepository
+readonly class LikeRepository
 {
     private const TABLE_NAME = 'tx_likeit_like';
 
     public function __construct(
-        protected readonly ConnectionPool $connectionPool,
+        protected ConnectionPool $connectionPool,
     ) {}
 
     public function findByRecord(LikeConfiguration $likeConfiguration): array

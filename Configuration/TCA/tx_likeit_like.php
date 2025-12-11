@@ -25,10 +25,9 @@ return [
         'liked_uid' => [
             'label' => 'LLL:EXT:like_it/Resources/Private/Language/locallang_db.xlf:tx_likeit_like.liked_uid',
             'config' => [
-                'type' => 'input',
-                'size' => 8,
-                'max' => 80,
-                'eval' => 'required,num',
+                'type' => 'number',
+                'format' => 'integer',
+                'required' => true,
             ],
         ],
         'liked_table' => [
@@ -37,16 +36,15 @@ return [
                 'type' => 'input',
                 'size' => 20,
                 'max' => 80,
-                'eval' => 'required,trim',
+                'required' => true,
+                'eval' => 'trim',
             ],
         ],
         'cookie_value' => [
             'label' => 'LLL:EXT:like_it/Resources/Private/Language/locallang_db.xlf:tx_likeit_like.cookie_value',
             'config' => [
-                'type' => 'input',
-                'size' => 20,
-                'max' => 255,
-                'eval' => 'required,trim,password',
+                'type' => 'password',
+                'required' => true,
             ],
         ],
     ],

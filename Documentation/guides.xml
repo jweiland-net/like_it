@@ -14,8 +14,8 @@
                typo3-core-preferred="stable"
     />
     <project title="Like It"
-             release="3.0"
-             version="3.0.0"
+             release="4.0"
+             version="4.0.0"
              copyright="by jweiland.net"
     />
 </guides>

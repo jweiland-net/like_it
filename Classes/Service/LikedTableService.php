@@ -14,10 +14,10 @@ namespace JWeiland\LikeIt\Service;
 use JWeiland\LikeIt\Domain\Repository\LikeRepository;
 use TYPO3\CMS\Core\Localization\LanguageService;
 
-class LikedTableService
+readonly class LikedTableService
 {
     public function __construct(
-        protected readonly LikeRepository $likeRepository,
+        protected LikeRepository $likeRepository,
     ) {}
 
     /**
