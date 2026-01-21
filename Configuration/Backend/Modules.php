@@ -12,7 +12,7 @@ declare(strict_types=1);
 return [
     'web_like_statistics' => [
         'parent' => 'web',
-        'access' => 'user,group',
+        'access' => 'user',
         'workspaces' => 'live',
         'labels' => 'LLL:EXT:like_it/Resources/Private/Language/locallang_db.xlf:module.like_statistics.label',
         'extensionName' => 'LikeIt',
