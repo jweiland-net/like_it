@@ -7,6 +7,16 @@
 ChangeLog
 =========
 
+Version 4.1.0
+=============
+
+*   [TASK] Simplify access restriction in Backend Module configuration
+
+Version 4.0.0
+=============
+
+*   [TASK] TYPO3 13 Compatibility
+
 Version 2.0.2
 =============
 
