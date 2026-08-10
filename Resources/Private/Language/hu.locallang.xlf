@@ -1,59 +1,59 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<xliff version="1.0">
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
   <file source-language="en" datatype="plaintext" original="messages" date="2018-11-28T17:38:20Z" product-name="like_it" target-language="hu">
     <header/>
     <body>
       <trans-unit id="message.could_not_add_like">
         <source>Could not add your like to the database!</source>
-        <target state="needs-translation">Could not add your like to the database!</target>
+        <target state="translated">Nem sikerült hozzáadni a kedvelést az adatbázishoz!</target>
       </trans-unit>
       <trans-unit id="message.could_not_remove_like">
         <source>Could not remove your like!</source>
-        <target state="needs-translation">Could not remove your like!</target>
+        <target state="translated">Nem sikerült eltávolítani a kedvelést!</target>
       </trans-unit>
       <trans-unit id="message.not_liked">
         <source>Like</source>
-        <target state="needs-translation">Like</target>
+        <target state="translated">Kedvelés</target>
       </trans-unit>
       <trans-unit id="message.liked">
         <source>You like</source>
-        <target state="needs-translation">You like</target>
+        <target state="translated">Kedveled</target>
       </trans-unit>
       <trans-unit id="message.amount_of_likes">
         <source><![CDATA[This record has been liked <span class="amount-of-likes">%d</span> times.]]></source>
-        <target state="needs-translation"><![CDATA[This record has been liked <span class="amount-of-likes">%d</span> times.]]></target>
+        <target state="translated"><![CDATA[Ezt a rekordot <span class="amount-of-likes">%d</span> alkalommal kedvelték.]]></target>
       </trans-unit>
       <trans-unit id="message.select_table">
         <source>Select a record type</source>
-        <target state="needs-translation">Select a record type</target>
+        <target state="translated">Válasszon rekordtípust</target>
       </trans-unit>
       <trans-unit id="message.no_likes">
         <source>Currently there are no likes!</source>
-        <target state="needs-translation">Currently there are no likes!</target>
+        <target state="translated">Jelenleg nincsenek kedvelések!</target>
       </trans-unit>
       <trans-unit id="button.edit_record">
         <source>Edit record</source>
-        <target state="needs-translation">Edit record</target>
+        <target state="translated">Rekord szerkesztése</target>
       </trans-unit>
       <trans-unit id="table.uid">
         <source>UID</source>
-        <target state="needs-translation">UID</target>
+        <target state="translated">UID</target>
       </trans-unit>
       <trans-unit id="table.title">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Cím</target>
       </trans-unit>
       <trans-unit id="table.likes">
         <source>Likes</source>
-        <target state="needs-translation">Likes</target>
+        <target state="translated">Kedvelések</target>
       </trans-unit>
       <trans-unit id="table.actions">
         <source>Actions</source>
-        <target state="needs-translation">Actions</target>
+        <target state="translated">Műveletek</target>
       </trans-unit>
       <trans-unit id="title.like_list">
         <source>Like list</source>
-        <target state="needs-translation">Like list</target>
+        <target state="translated">Kedveléslista</target>
       </trans-unit>
     </body>
   </file>
