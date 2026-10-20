@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="messages" date="2018-11-28T17:38:20Z" product-name="like_it" target-language="t3">
+    <header/>
+    <body>
+      <trans-unit id="message.could_not_add_like">
+        <source>Could not add your like to the database!</source>
+        <target>crwdns307864:0crwdne307864:0</target>
+      </trans-unit>
+      <trans-unit id="message.could_not_remove_like">
+        <source>Could not remove your like!</source>
+        <target>crwdns307866:0crwdne307866:0</target>
+      </trans-unit>
+      <trans-unit id="message.not_liked">
+        <source>Like</source>
+        <target>crwdns307868:0crwdne307868:0</target>
+      </trans-unit>
+      <trans-unit id="message.liked">
+        <source>You like</source>
+        <target>crwdns307870:0crwdne307870:0</target>
+      </trans-unit>
+      <trans-unit id="message.amount_of_likes">
+        <source><![CDATA[This record has been liked <span class="amount-of-likes">%d</span> times.]]></source>
+        <target><![CDATA[crwdns307872:0%dcrwdne307872:0]]></target>
+      </trans-unit>
+      <trans-unit id="message.select_table">
+        <source>Select a record type</source>
+        <target>crwdns307874:0crwdne307874:0</target>
+      </trans-unit>
+      <trans-unit id="message.no_likes">
+        <source>Currently there are no likes!</source>
+        <target>crwdns307876:0crwdne307876:0</target>
+      </trans-unit>
+      <trans-unit id="button.edit_record">
+        <source>Edit record</source>
+        <target>crwdns307878:0crwdne307878:0</target>
+      </trans-unit>
+      <trans-unit id="table.uid">
+        <source>UID</source>
+        <target>crwdns307880:0crwdne307880:0</target>
+      </trans-unit>
+      <trans-unit id="table.title">
+        <source>Title</source>
+        <target>crwdns307882:0crwdne307882:0</target>
+      </trans-unit>
+      <trans-unit id="table.likes">
+        <source>Likes</source>
+        <target>crwdns307884:0crwdne307884:0</target>
+      </trans-unit>
+      <trans-unit id="table.actions">
+        <source>Actions</source>
+        <target>crwdns307886:0crwdne307886:0</target>
+      </trans-unit>
+      <trans-unit id="title.like_list">
+        <source>Like list</source>
+        <target>crwdns307888:0crwdne307888:0</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
