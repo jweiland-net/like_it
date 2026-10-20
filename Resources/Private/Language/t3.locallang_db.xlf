@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="messages" date="2018-11-28T17:38:20Z" product-name="like_it" target-language="t3">
+    <header/>
+    <body>
+      <trans-unit id="tx_likeit_like.title">
+        <source>Rating</source>
+        <target>crwdns307890:0crwdne307890:0</target>
+      </trans-unit>
+      <trans-unit id="tx_likeit_like.liked_uid">
+        <source>Rated for uid</source>
+        <target>crwdns307892:0crwdne307892:0</target>
+      </trans-unit>
+      <trans-unit id="tx_likeit_like.liked_table">
+        <source>Rated for table</source>
+        <target>crwdns307894:0crwdne307894:0</target>
+      </trans-unit>
+      <trans-unit id="tx_likeit_like.cookie_value">
+        <source>Cookie value (secret)</source>
+        <target>crwdns307896:0crwdne307896:0</target>
+      </trans-unit>
+      <trans-unit id="module.like_statistics.label">
+        <source>Like statistics</source>
+        <target>crwdns307898:0crwdne307898:0</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
